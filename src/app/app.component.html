@@ -1,0 +1,10 @@
+<app-nav [user]=user (navRoute)=changeRoute($event)></app-nav>
+
+<div class="container">
+	<app-members [user]=user *ngIf="user && route === 'members'"></app-members>
+
+	<app-login (user)=getUser($event) *ngIf="!user && route ==='login'"></app-login>
+
+	<app-register *ngIf="!user && route ==='register'"></app-register>
+</div>
+
