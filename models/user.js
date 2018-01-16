@@ -1,13 +1,13 @@
 const mongoose 		= require('mongoose');
 const bcrypt			= require('bcryptjs');
 
-const dbUrl = 'mongodb://ahmed_soliman:123456@ds249707.mlab.com:49707/mean_ng5_auth'
-mongoose.connect( dbUrl , (err) => {
-	if(err) {
-		return console.log('CAN NOT CONNECT')
-	}
-});
-const db = mongoose.connection;
+// const dbUrl = 'mongodb://ahmed_soliman:123456@ds249707.mlab.com:49707/mean_ng5_auth'
+// mongoose.connect( dbUrl , (err) => {
+// 	if(err) {
+// 		return console.log('CAN NOT CONNECT')
+// 	}
+// });
+// const db = mongoose.connection;
 
 //User Schema
 
