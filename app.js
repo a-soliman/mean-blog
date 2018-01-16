@@ -47,7 +47,7 @@ app.get('*', ( req, res ) => {
 // Handle sessions
 app.use(session({
 	secret: 'secret',
-	saveIninitialized: true,
+	saveUninitialized: true,
 	resave: true
 }));
 
