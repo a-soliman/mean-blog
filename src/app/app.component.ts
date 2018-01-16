@@ -1,4 +1,5 @@
 import { Component, OnInit, Output } from '@angular/core';
+import * as moment from 'moment';
 
 import { LogoutService } from './services/logout.service';
 
