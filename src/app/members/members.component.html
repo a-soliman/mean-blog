@@ -4,22 +4,15 @@
 
 	<ul>
 		<li>
-			<a href="#">Posts</a>
+			<a routerLink="api/posts">Posts</a>
 		</li>
 		<li>
-			<a href="#">Add Post</a>
+			<a routerLink="api/addpost">Add Post</a>
 		</li>
 		<li>
-			<a href="#">Add Category</a>
+			<a routerLink="api/addcategory">Add Category</a>
 		</li>
 	</ul>
 
-	<div class="posts">
-		<div *ngFor="let post of posts">
-			<h2>{{ post.title }}</h2>
-			<p>{{ post.author }}</p>
-			<p>{{ post.body }}</p>
-			<p>{{ post.date }}</p>
-		</div>
-	</div>
+	
 </div>
