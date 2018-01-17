@@ -11,6 +11,7 @@ const mongoose 			= require('mongoose');
 
 const User 				= require('../../models/user');
 const Post 				= require('../../models/post');
+const Category 			= require('../../models/category');
 
 
 const dbUrl = 'mongodb://ahmed_soliman:123456@ds249707.mlab.com:49707/mean_ng5_auth'
@@ -147,8 +148,27 @@ router.post('/posts/add', ( req, res ) => {
 			res.status(200).send({success: true, message: 'Post Added.'});
 		})
 	}
-
-
 });
+
+router.post('/category/add', ( req, res ) => {
+	let name = req.body.name;
+
+	// formValidation
+	req.checkBody('name', 'name field is required.');
+
+	let errors = req.validationErrors();
+
+	if ( errors ) {
+		req.send({errors});
+	}
+	else {
+		const newCategory = new Category({ name });
+		Category.createCategory(newCategory, ( err, category ) => {
+			if ( err ) throw err;
+			console.log(category);
+			res.status(200).send({ success: true, message: 'Added newCategory' });
+		})
+	}
+})
 
 module.exports = router;
