@@ -150,6 +150,15 @@ router.post('/posts/add', ( req, res ) => {
 	}
 });
 
+router.get('/category', ( req, res ) => {
+	let categories = Category.find({}, {}, ( err, categories ) => {
+		if( err ) {
+			return console.log('## Error finding categories ##');
+		}
+		res.send({ success: true, categories: categories });
+	})
+})
+
 router.post('/category/add', ( req, res ) => {
 	let name = req.body.name;
 
