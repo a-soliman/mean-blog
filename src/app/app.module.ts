@@ -15,6 +15,7 @@ import { LoginComponent } from './login/login.component';
 import { PostsComponent } from './posts/posts.component';
 import { AddPostComponent } from './add-post/add-post.component';
 import { AddCategoryComponent } from './add-category/add-category.component';
+import { PostComponent } from './post/post.component';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { AddCategoryComponent } from './add-category/add-category.component';
     LoginComponent,
     PostsComponent,
     AddPostComponent,
-    AddCategoryComponent
+    AddCategoryComponent,
+    PostComponent
   ],
   imports: [
     BrowserModule,
