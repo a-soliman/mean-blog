@@ -99,7 +99,7 @@ var AddCategoryComponent = (function () {
             providers: [__WEBPACK_IMPORTED_MODULE_3__services_add_category_service__["a" /* AddCategoryService */]]
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_3__services_add_category_service__["a" /* AddCategoryService */],
-            __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* Router */],
+            __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */],
             __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormBuilder */]])
     ], AddCategoryComponent);
     return AddCategoryComponent;
@@ -217,7 +217,7 @@ var AddPostComponent = (function () {
             providers: [__WEBPACK_IMPORTED_MODULE_3__services_add_post_service__["a" /* AddPostService */], __WEBPACK_IMPORTED_MODULE_4__services_add_category_service__["a" /* AddCategoryService */]]
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormBuilder */],
-            __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* Router */],
+            __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */],
             __WEBPACK_IMPORTED_MODULE_3__services_add_post_service__["a" /* AddPostService */],
             __WEBPACK_IMPORTED_MODULE_4__services_add_category_service__["a" /* AddCategoryService */]])
     ], AddPostComponent);
@@ -345,12 +345,14 @@ var AppComponent = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__posts_posts_component__ = __webpack_require__("../../../../../src/app/posts/posts.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__add_post_add_post_component__ = __webpack_require__("../../../../../src/app/add-post/add-post.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__add_category_add_category_component__ = __webpack_require__("../../../../../src/app/add-category/add-category.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__post_post_component__ = __webpack_require__("../../../../../src/app/post/post.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -378,7 +380,8 @@ var AppModule = (function () {
                 __WEBPACK_IMPORTED_MODULE_10__login_login_component__["a" /* LoginComponent */],
                 __WEBPACK_IMPORTED_MODULE_11__posts_posts_component__["a" /* PostsComponent */],
                 __WEBPACK_IMPORTED_MODULE_12__add_post_add_post_component__["a" /* AddPostComponent */],
-                __WEBPACK_IMPORTED_MODULE_13__add_category_add_category_component__["a" /* AddCategoryComponent */]
+                __WEBPACK_IMPORTED_MODULE_13__add_category_add_category_component__["a" /* AddCategoryComponent */],
+                __WEBPACK_IMPORTED_MODULE_14__post_post_component__["a" /* PostComponent */]
             ],
             imports: [
                 __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
@@ -406,18 +409,21 @@ var AppModule = (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return routes; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_router__ = __webpack_require__("../../../router/esm5/router.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__posts_posts_component__ = __webpack_require__("../../../../../src/app/posts/posts.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__add_post_add_post_component__ = __webpack_require__("../../../../../src/app/add-post/add-post.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__add_category_add_category_component__ = __webpack_require__("../../../../../src/app/add-category/add-category.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__post_post_component__ = __webpack_require__("../../../../../src/app/post/post.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__add_post_add_post_component__ = __webpack_require__("../../../../../src/app/add-post/add-post.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__add_category_add_category_component__ = __webpack_require__("../../../../../src/app/add-category/add-category.component.ts");
+
 
 
 
 
 var router = [
     { path: 'posts', component: __WEBPACK_IMPORTED_MODULE_1__posts_posts_component__["a" /* PostsComponent */] },
-    { path: 'posts/add', component: __WEBPACK_IMPORTED_MODULE_2__add_post_add_post_component__["a" /* AddPostComponent */] },
-    { path: 'category/add', component: __WEBPACK_IMPORTED_MODULE_3__add_category_add_category_component__["a" /* AddCategoryComponent */] },
+    { path: 'posts/add', component: __WEBPACK_IMPORTED_MODULE_3__add_post_add_post_component__["a" /* AddPostComponent */] },
+    { path: 'category/add', component: __WEBPACK_IMPORTED_MODULE_4__add_category_add_category_component__["a" /* AddCategoryComponent */] },
+    { path: 'posts/:id', component: __WEBPACK_IMPORTED_MODULE_2__post_post_component__["a" /* PostComponent */] }
 ];
-var routes = __WEBPACK_IMPORTED_MODULE_0__angular_router__["b" /* RouterModule */].forRoot(router);
+var routes = __WEBPACK_IMPORTED_MODULE_0__angular_router__["c" /* RouterModule */].forRoot(router);
 
 
 /***/ }),
@@ -666,6 +672,88 @@ var NavComponent = (function () {
 
 /***/ }),
 
+/***/ "../../../../../src/app/post/post.component.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/post/post.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "\n<div class=\"post\" *ngIf=\"post\">\n\t<h1>{{post.title}}</h1>\n\t<p class=\"meta\">Posted in <a href=\"#\">{{post.category}}</a>, by {{post.author}}, at {{post.date}}</p>\n</div>"
+
+/***/ }),
+
+/***/ "../../../../../src/app/post/post.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PostComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("../../../router/esm5/router.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_post_service__ = __webpack_require__("../../../../../src/app/services/post.service.ts");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var PostComponent = (function () {
+    function PostComponent(route, postService) {
+        this.route = route;
+        this.postService = postService;
+    }
+    PostComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.route.params.subscribe(function (params) {
+            console.log(params.id);
+            _this.getPost(params.id);
+        });
+    };
+    PostComponent.prototype.getPost = function (id) {
+        var _this = this;
+        this.postService.getPost(id)
+            .subscribe(function (res) {
+            _this.post = res.post;
+            console.log(res.post);
+        });
+    };
+    PostComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+            selector: 'app-post',
+            template: __webpack_require__("../../../../../src/app/post/post.component.html"),
+            styles: [__webpack_require__("../../../../../src/app/post/post.component.css")],
+            providers: [__WEBPACK_IMPORTED_MODULE_2__services_post_service__["a" /* PostService */]]
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */],
+            __WEBPACK_IMPORTED_MODULE_2__services_post_service__["a" /* PostService */]])
+    ], PostComponent);
+    return PostComponent;
+}());
+
+
+
+/***/ }),
+
 /***/ "../../../../../src/app/posts/posts.component.css":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -687,7 +775,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/posts/posts.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"posts\">\n\t<div *ngFor=\"let post of posts\">\n\t\t<h2>\n\t\t\t<a routerLink=\"api/posts/{{post._id}}\">\n\t\t\t\t{{ post.title }}\n\t\t\t</a>\n\t\t</h2>\n\t\t<p class=\"meta\">Posted in {{ post.category }}, by {{post.author}}, on {{ moment(post.date).format(\"MM-DD-YYYY\") }}</p>\n\t\t<p>{{post.body}}</p>\n\t\t<button routerLink=\"api/posts/{{post._id}}\">Read More</button>\n\t</div>\n</div>"
+module.exports = "<div class=\"posts\">\n\t<div *ngFor=\"let post of posts\">\n\t\t<h2>\n\t\t\t<a routerLink=\"api/posts/{{post._id}}\">\n\t\t\t\t{{ post.title }}\n\t\t\t</a>\n\t\t</h2>\n\t\t<p class=\"meta\">Posted in {{ post.category }}, by {{post.author}}, on {{ moment(post.date).format(\"MM-DD-YYYY\") }}</p>\n\t\t<p>{{post.body}}</p>\n\t\t<button routerLink=\"/posts/{{post._id}}\">Read More</button>\n\t</div>\n</div>"
 
 /***/ }),
 
@@ -1001,6 +1089,45 @@ var LogoutService = (function () {
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Http */]])
     ], LogoutService);
     return LogoutService;
+}());
+
+
+
+/***/ }),
+
+/***/ "../../../../../src/app/services/post.service.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PostService; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__("../../../http/esm5/http.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__ = __webpack_require__("../../../../rxjs/_esm5/add/operator/map.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var PostService = (function () {
+    function PostService(http) {
+        this.http = http;
+    }
+    PostService.prototype.getPost = function (id) {
+        return this.http.get("/api/posts/" + id)
+            .map(function (res) { return res.json(); });
+    };
+    PostService = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* Injectable */])(),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Http */]])
+    ], PostService);
+    return PostService;
 }());
 
 
