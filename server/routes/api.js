@@ -118,6 +118,18 @@ router.get('/posts', ( req, res ) => {
 	});
 });
 
+router.get('/posts/:id', (req, res, next ) => {
+	let id = req.params.id;
+	console.log(id)
+	Post.findById( id, ( err, post ) => {
+		if ( err ) {
+			return console.log('## Error finding post ##');
+		}
+		res.status(200).send({sucess: true, post: post});
+	})
+	
+});
+
 router.post('/posts/add', ( req, res ) => {
 	let title 		= req.body.title;
 	let category 	= req.body.category;
