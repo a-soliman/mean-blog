@@ -8,9 +8,9 @@ import { AddPostComponent } from './add-post/add-post.component';
 import { AddCategoryComponent } from './add-category/add-category.component';
 
 export const router: Routes = [
-	{ path: 'api/posts', component: PostsComponent},
-	{ path: 'api/addpost', component: AddPostComponent},
-	{ path: 'api/addcategory', component: AddCategoryComponent},
+	{ path: 'posts', component: PostsComponent},
+	{ path: 'posts/add', component: AddPostComponent},
+	{ path: 'category/add', component: AddCategoryComponent},
 ];
 
 export const routes: ModuleWithProviders = RouterModule.forRoot(router);
