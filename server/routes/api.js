@@ -7,7 +7,7 @@ const upload			= multer({dest: './uploads'});
 const passport 			= require('passport');
 const localStrategy 	= require('passport-local').Strategy;
 const bcrypt			= require('bcryptjs');
-const mongoose 		= require('mongoose');
+const mongoose 			= require('mongoose');
 
 const User 				= require('../../models/user');
 const Post 				= require('../../models/post');
@@ -115,7 +115,40 @@ router.get('/posts', ( req, res ) => {
 		}
 		res.send({ status: 'success', posts: posts });
 	});
-	
-})
+});
+
+router.post('/posts/add', ( req, res ) => {
+	let title 		= req.body.title;
+	let category 	= req.body.category;
+	let body 		= req.body.body;
+	let author 		= req.body.author;
+	let mainImage;
+
+	// form validation
+	req.checkBody('title', 'Title field is required.').notEmpty();
+	//req.checkBody('category', 'Category field is required').notEmpty();
+	req.checkBody('body', 'Body field is required.').notEmpty();
+	req.checkBody('author', 'Author field is required.').notEmpty();
+
+	//check error
+	let errors = req.validationErrors();
+
+	if( errors ) {
+		res.send({errors})
+	}
+	else {
+		const newPost = new Post({
+			title, category, body, author, mainImage
+		})
+
+		Post.createPost(newPost, ( err, post ) => {
+			if ( err ) throw err;
+			console.log(post);
+			res.status(200).send({success: true, message: 'Post Added.'});
+		})
+	}
+
+
+});
 
 module.exports = router;
