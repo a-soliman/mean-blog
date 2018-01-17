@@ -38,7 +38,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/add-category/add-category.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<p>\n  add-category works!\n</p>\n"
+module.exports = "<h2 class=\"page-header\">Add Category</h2>\n\n<div class=\"success-message\" *ngIf=\"successMessage\">\n\t<div class=\"alert alert-success\">{{successMessage}}</div>\n</div>\n\n<div class=\"errors\" *ngIf=\"serverValidationErrors\">\n\t<div *ngFor=\"let error of serverValidationErrors\">\n\t\t<div class=\"alert alert-danger\">{{error.msg}}</div>\n\t</div>\n</div>\n\n<form [formGroup]=\"addCategoryForm\" (ngSubmit)=\"addCategory(addCategoryForm.value)\">\n\n\t<div class=\"form-group\">\n\t\t<label for=\"\">name</label>\n\t\t<input formControlName=\"name\" type=\"text\" class=\"form-control\">\n\n\t\t<div class=\"alert alert-danger\" *ngIf=\"!addCategoryForm.controls['name'].valid && addCategoryForm.controls['name'].touched\">\n\t\t\tName is required..\n\t\t</div>\n\t</div>\n\n\t<input \n\t\ttype=\"submit\" \n\t\tclass=\"btn btn-primary\" \n\t\tvalue=\"Add Category\"\n\t\t[disabled]=\"!addCategoryForm.valid\"\n\t\t>\n</form>"
 
 /***/ }),
 
@@ -48,6 +48,9 @@ module.exports = "<p>\n  add-category works!\n</p>\n"
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AddCategoryComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_forms__ = __webpack_require__("../../../forms/esm5/forms.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__("../../../router/esm5/router.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_add_category_service__ = __webpack_require__("../../../../../src/app/services/add-category.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -58,18 +61,46 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+
+
+
 var AddCategoryComponent = (function () {
-    function AddCategoryComponent() {
+    function AddCategoryComponent(addCategoryService, router, fb) {
+        this.addCategoryService = addCategoryService;
+        this.router = router;
+        this.fb = fb;
+        this.serverValidationErrors = [];
+        this.addCategoryForm = fb.group({
+            'name': [null, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["d" /* Validators */].compose([__WEBPACK_IMPORTED_MODULE_1__angular_forms__["d" /* Validators */].required, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["d" /* Validators */].minLength(3)])]
+        });
     }
     AddCategoryComponent.prototype.ngOnInit = function () {
+    };
+    AddCategoryComponent.prototype.addCategory = function (category) {
+        var _this = this;
+        this.addCategoryService.addCategory(category)
+            .subscribe(function (res) {
+            if (res.success === true) {
+                _this.successMessage = res.message;
+                _this.serverValidationErrors = [];
+                _this.addCategoryForm.reset();
+                _this.router.navigate(["/posts"]);
+            }
+            if (res.errors) {
+                return _this.serverValidationErrors = res.errors;
+            }
+        });
     };
     AddCategoryComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
             selector: 'app-add-category',
             template: __webpack_require__("../../../../../src/app/add-category/add-category.component.html"),
-            styles: [__webpack_require__("../../../../../src/app/add-category/add-category.component.css")]
+            styles: [__webpack_require__("../../../../../src/app/add-category/add-category.component.css")],
+            providers: [__WEBPACK_IMPORTED_MODULE_3__services_add_category_service__["a" /* AddCategoryService */]]
         }),
-        __metadata("design:paramtypes", [])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_3__services_add_category_service__["a" /* AddCategoryService */],
+            __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* Router */],
+            __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormBuilder */]])
     ], AddCategoryComponent);
     return AddCategoryComponent;
 }());
@@ -99,7 +130,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/add-post/add-post.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<h2 class=\"page-header\">Add Post</h2>\n\n<div class=\"success-message\" *ngIf=\"successMessage\">\n\t<div class=\"alert alert-success\">{{successMessage}}</div>\n</div>\n\n<div class=\"errors\" *ngIf=\"serverValidationErrors\">\n\t<div *ngFor=\"let error of serverValidationErrors\">\n\t\t<div class=\"alert alert-danger\">{{error.msg}}</div>\n\t</div>\n</div>\n\n<form [formGroup]=\"addPostForm\" (ngSubmit)=\"addPost(addPostForm.value)\" enctype=\"multipart/form-data\">\n\n\t<div class=\"form-group\">\n\t\t<label for=\"\">Title</label>\n\t\t<input formControlName=\"title\" type=\"text\" class=\"form-control\">\n\n\t\t<div class=\"alert alert-danger\" *ngIf=\"!addPostForm.controls['title'].valid && addPostForm.controls['title'].touched\">\n\t\t\tTitle is required..\n\t\t</div>\n\t</div>\n\n\t<div class=\"form-group\">\n\t\t<label for=\"\">Category</label>\n\t\t<select formControlName=\"category\" name=\"category\" id=\"category\">\n\t\t\t\n\t\t</select>\n\t</div>\n\n\t<div class=\"form-group\">\n\t\t<label for=\"\">body</label>\n\t\t<textarea formControlName=\"body\" class=\"form-control\"></textarea>\n\n\t\t<div class=\"alert alert-danger\" *ngIf=\"!addPostForm.controls['body'].valid && addPostForm.controls['body'].touched\">\n\t\t\tbody is required..\n\t\t</div>\n\t</div>\n\n\t<div class=\"form-group\">\n\t\t<label for=\"\">Main Image</label>\n\t\t<input class=\"form-control\" name=\"mainImage\" formControlName=\"mainImage\" type=\"file\">\n\t</div>\n\n\t<input type=\"hidden\" formControlName=\"author\" value=\"user.username\">\n\n\n\n\t<input \n\t\ttype=\"submit\" \n\t\tclass=\"btn btn-primary\" \n\t\tvalue=\"Add Post\"\n\t\t[disabled]=\"!addPostForm.valid\"\n\t\t>\n</form>"
+module.exports = "<h2 class=\"page-header\">Add Post</h2>\n\n<div class=\"success-message\" *ngIf=\"successMessage\">\n\t<div class=\"alert alert-success\">{{successMessage}}</div>\n</div>\n\n<div class=\"errors\" *ngIf=\"serverValidationErrors\">\n\t<div *ngFor=\"let error of serverValidationErrors\">\n\t\t<div class=\"alert alert-danger\">{{error.msg}}</div>\n\t</div>\n</div>\n\n<form [formGroup]=\"addPostForm\" (ngSubmit)=\"addPost(addPostForm.value)\" enctype=\"multipart/form-data\">\n\n\t<div class=\"form-group\">\n\t\t<label for=\"\">Title</label>\n\t\t<input formControlName=\"title\" type=\"text\" class=\"form-control\">\n\n\t\t<div class=\"alert alert-danger\" *ngIf=\"!addPostForm.controls['title'].valid && addPostForm.controls['title'].touched\">\n\t\t\tTitle is required..\n\t\t</div>\n\t</div>\n\n\t<div class=\"form-group\">\n\t\t<label for=\"\">Category</label>\n\t\t<select formControlName=\"category\" name=\"category\" id=\"category\" class=\"form-control\">\n\t\t\t<option *ngFor=\"let category of categories\" value=\"{{category}}\">{{category}}</option>\n\t\t</select>\n\t</div>\n\n\t<div class=\"form-group\">\n\t\t<label for=\"\">body</label>\n\t\t<textarea formControlName=\"body\" class=\"form-control\"></textarea>\n\n\t\t<div class=\"alert alert-danger\" *ngIf=\"!addPostForm.controls['body'].valid && addPostForm.controls['body'].touched\">\n\t\t\tbody is required..\n\t\t</div>\n\t</div>\n\n\t<div class=\"form-group\">\n\t\t<label for=\"\">Main Image</label>\n\t\t<input class=\"form-control\" name=\"mainImage\" formControlName=\"mainImage\" type=\"file\">\n\t</div>\n\n\t<input type=\"hidden\" formControlName=\"author\" value=\"user.username\">\n\n\n\n\t<input \n\t\ttype=\"submit\" \n\t\tclass=\"btn btn-primary\" \n\t\tvalue=\"Add Post\"\n\t\t[disabled]=\"!addPostForm.valid\"\n\t\t>\n</form>"
 
 /***/ }),
 
@@ -112,6 +143,7 @@ module.exports = "<h2 class=\"page-header\">Add Post</h2>\n\n<div class=\"succes
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_forms__ = __webpack_require__("../../../forms/esm5/forms.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__("../../../router/esm5/router.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_add_post_service__ = __webpack_require__("../../../../../src/app/services/add-post.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_add_category_service__ = __webpack_require__("../../../../../src/app/services/add-category.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -125,13 +157,15 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var AddPostComponent = (function () {
-    function AddPostComponent(fb, router, addPostService) {
+    function AddPostComponent(fb, router, addPostService, addCategoryService) {
         this.fb = fb;
         this.router = router;
         this.addPostService = addPostService;
+        this.addCategoryService = addCategoryService;
+        this.categories = [];
         this.serverValidationErrors = [];
-        this.user = JSON.parse(localStorage.getItem('user')) || null;
         this.addPostForm = fb.group({
             'title': [null, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["d" /* Validators */].compose([__WEBPACK_IMPORTED_MODULE_1__angular_forms__["d" /* Validators */].required, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["d" /* Validators */].minLength(3)])],
             'category': [null],
@@ -141,11 +175,11 @@ var AddPostComponent = (function () {
         });
     }
     AddPostComponent.prototype.ngOnInit = function () {
-        console.log(this.user);
+        this.user = JSON.parse(localStorage.getItem('user')) || null;
         if (this.user === null) {
-            console.log('user is null');
             this.router.navigate([" "]);
         }
+        this.getCategories();
     };
     AddPostComponent.prototype.addPost = function (post) {
         var _this = this;
@@ -159,8 +193,19 @@ var AddPostComponent = (function () {
                 _this.addPostForm.reset();
                 _this.router.navigate(["/posts"]);
             }
+        });
+    };
+    AddPostComponent.prototype.getCategories = function () {
+        var _this = this;
+        this.addCategoryService.getCategories()
+            .subscribe(function (res) {
             if (res.errors) {
                 return _this.serverValidationErrors = res.errors;
+            }
+            if (res.success === true) {
+                res.categories.forEach(function (category) {
+                    _this.categories.push(category.name);
+                });
             }
         });
     };
@@ -169,11 +214,12 @@ var AddPostComponent = (function () {
             selector: 'app-add-post',
             template: __webpack_require__("../../../../../src/app/add-post/add-post.component.html"),
             styles: [__webpack_require__("../../../../../src/app/add-post/add-post.component.css")],
-            providers: [__WEBPACK_IMPORTED_MODULE_3__services_add_post_service__["a" /* AddPostService */]]
+            providers: [__WEBPACK_IMPORTED_MODULE_3__services_add_post_service__["a" /* AddPostService */], __WEBPACK_IMPORTED_MODULE_4__services_add_category_service__["a" /* AddCategoryService */]]
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormBuilder */],
             __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* Router */],
-            __WEBPACK_IMPORTED_MODULE_3__services_add_post_service__["a" /* AddPostService */]])
+            __WEBPACK_IMPORTED_MODULE_3__services_add_post_service__["a" /* AddPostService */],
+            __WEBPACK_IMPORTED_MODULE_4__services_add_category_service__["a" /* AddCategoryService */]])
     ], AddPostComponent);
     return AddPostComponent;
 }());
@@ -795,6 +841,49 @@ var RegisterComponent = (function () {
             __WEBPACK_IMPORTED_MODULE_2__services_register_service__["a" /* RegisterService */]])
     ], RegisterComponent);
     return RegisterComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "../../../../../src/app/services/add-category.service.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AddCategoryService; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__("../../../http/esm5/http.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__ = __webpack_require__("../../../../rxjs/_esm5/add/operator/map.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var AddCategoryService = (function () {
+    function AddCategoryService(http) {
+        this.http = http;
+    }
+    AddCategoryService.prototype.addCategory = function (category) {
+        return this.http.post("/api/category/add", category)
+            .map(function (res) { return res.json(); });
+    };
+    AddCategoryService.prototype.getCategories = function () {
+        return this.http.get("/api/category")
+            .map(function (res) { return res.json(); });
+    };
+    AddCategoryService = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* Injectable */])(),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Http */]])
+    ], AddCategoryService);
+    return AddCategoryService;
 }());
 
 
