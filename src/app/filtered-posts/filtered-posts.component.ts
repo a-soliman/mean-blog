@@ -14,10 +14,10 @@ import { Post } from '../post';
 
 export class FilteredPostsComponent implements OnInit {
 
-	  filter_by: string;
-    filter   : string
-    posts    : Array<Post>;
-    resultCount: number;
+	  filter_by    : string;
+    filter       : string
+    posts        : Array<Post>;
+    resultCount  : number;
 
     now = moment();
     moment = moment
