@@ -120,7 +120,6 @@ router.get('/posts', ( req, res ) => {
 
 router.get('/posts/:id', (req, res, next ) => {
 	let id = req.params.id;
-	console.log(id)
 	Post.findById( id, ( err, post ) => {
 		if ( err ) {
 			return console.log('## Error finding post ##');
@@ -129,6 +128,31 @@ router.get('/posts/:id', (req, res, next ) => {
 	})
 	
 });
+
+router.get('/posts/filter_by_category/:filter', ( req, res, next ) => {
+	let category 		= req.params.filter;
+	
+	Post.find({category}, ( err, posts) => {
+		if ( err ) {
+			res.status(400).send({ success: false, message: 'Error finding posts.'});
+		}
+
+		res.status(200).send({ success: true, posts: posts });
+	})
+});
+
+router.get('/posts/filter_by_author/:filter', ( req, res, next ) => {
+	let author 		= req.params.filter;
+
+	Post.find({author}, ( err, posts) => {
+		if ( err ) {
+			res.status(400).send({ success: false, message: 'Error finding posts.'});
+		}
+
+		res.status(200).send({ success: true, posts: posts });
+	})
+});
+
 
 router.post('/posts/add', upload.single('mainImage'), ( req, res ) => {
 	let title 		= req.body.title;
