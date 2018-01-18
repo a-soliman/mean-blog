@@ -170,7 +170,7 @@ router.get('/category', ( req, res ) => {
 		}
 		res.send({ success: true, categories: categories });
 	})
-})
+});
 
 router.post('/category/add', ( req, res ) => {
 	let name = req.body.name;
@@ -191,6 +191,7 @@ router.post('/category/add', ( req, res ) => {
 			res.status(200).send({ success: true, message: 'Added newCategory' });
 		})
 	}
-})
+});
+
 
 module.exports = router;
