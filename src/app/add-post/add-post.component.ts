@@ -31,7 +31,6 @@ export class AddPostComponent implements OnInit {
   			'title': [null, Validators.compose([ Validators.required, Validators.minLength(3) ])],
   			'category': [null],
   			'body': [ null, Validators.compose([ Validators.required, Validators.minLength(20) ])],
-  			'mainImage': [ null],
   			'author': [ null ]
   		});
   	}
@@ -52,14 +51,14 @@ export class AddPostComponent implements OnInit {
       let file = files[0];
       
       let formData = new FormData();
-      formData.append('file', file);
+      formData.append('mainImage', file, file.name);
       Object.keys(post).forEach((item) => {
-        formData.append('item', post[item]);
+        formData.append(item, post[item]);
       })
       //end imageHandeling
-  		
-      post.author = this.user.username;
-  		this.addPostService.addPost(post)
+  		formData.append('author', this.user.username);
+      //post.author = this.user.username;
+  		this.addPostService.addPost(formData)
   			.subscribe((res) => {
   				console.log(res)
   				if ( res.success === true) {
