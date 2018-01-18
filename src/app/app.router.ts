@@ -8,6 +8,7 @@ import { PostComponent } from './post/post.component';
 import { AddPostComponent } from './add-post/add-post.component';
 import { AddCategoryComponent } from './add-category/add-category.component';
 import { FilteredPostsComponent } from './filtered-posts/filtered-posts.component';
+import { AccountComponent } from './account/account.component';
 
 export const router: Routes = [
 	{ path: 'posts/add', component: AddPostComponent},
@@ -15,7 +16,8 @@ export const router: Routes = [
 	{ path: 'posts/filter/:filter', component: FilteredPostsComponent},
 	{ path: 'posts/:id', component: PostComponent },
 	{ path: 'posts', component: PostsComponent},
-	{ path: 'category/add', component: AddCategoryComponent}
+	{ path: 'category/add', component: AddCategoryComponent},
+	{ path: 'account', component: AccountComponent }
 	
 ];
 
