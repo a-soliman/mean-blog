@@ -35,7 +35,7 @@ app.use(cookieParser());
 
 //Angular dist output folder
 app.use(express.static(path.join(__dirname, 'dist')));
-app.use(express.static(path.join(__dirname, 'uploads')));
+app.use("/uploads", express.static(path.join(__dirname, 'uploads')));
 
 // API location
 app.use('/api', api);
