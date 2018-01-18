@@ -357,12 +357,14 @@ var AppComponent = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__add_post_add_post_component__ = __webpack_require__("../../../../../src/app/add-post/add-post.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__add_category_add_category_component__ = __webpack_require__("../../../../../src/app/add-category/add-category.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__post_post_component__ = __webpack_require__("../../../../../src/app/post/post.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__filtered_posts_filtered_posts_component__ = __webpack_require__("../../../../../src/app/filtered-posts/filtered-posts.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -392,7 +394,8 @@ var AppModule = (function () {
                 __WEBPACK_IMPORTED_MODULE_11__posts_posts_component__["a" /* PostsComponent */],
                 __WEBPACK_IMPORTED_MODULE_12__add_post_add_post_component__["a" /* AddPostComponent */],
                 __WEBPACK_IMPORTED_MODULE_13__add_category_add_category_component__["a" /* AddCategoryComponent */],
-                __WEBPACK_IMPORTED_MODULE_14__post_post_component__["a" /* PostComponent */]
+                __WEBPACK_IMPORTED_MODULE_14__post_post_component__["a" /* PostComponent */],
+                __WEBPACK_IMPORTED_MODULE_15__filtered_posts_filtered_posts_component__["a" /* FilteredPostsComponent */]
             ],
             imports: [
                 __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
@@ -423,18 +426,114 @@ var AppModule = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__post_post_component__ = __webpack_require__("../../../../../src/app/post/post.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__add_post_add_post_component__ = __webpack_require__("../../../../../src/app/add-post/add-post.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__add_category_add_category_component__ = __webpack_require__("../../../../../src/app/add-category/add-category.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__filtered_posts_filtered_posts_component__ = __webpack_require__("../../../../../src/app/filtered-posts/filtered-posts.component.ts");
+
 
 
 
 
 
 var router = [
-    { path: 'posts', component: __WEBPACK_IMPORTED_MODULE_1__posts_posts_component__["a" /* PostsComponent */] },
     { path: 'posts/add', component: __WEBPACK_IMPORTED_MODULE_3__add_post_add_post_component__["a" /* AddPostComponent */] },
-    { path: 'category/add', component: __WEBPACK_IMPORTED_MODULE_4__add_category_add_category_component__["a" /* AddCategoryComponent */] },
-    { path: 'posts/:id', component: __WEBPACK_IMPORTED_MODULE_2__post_post_component__["a" /* PostComponent */] }
+    { path: 'posts/filter/:filter_by/:filter', component: __WEBPACK_IMPORTED_MODULE_5__filtered_posts_filtered_posts_component__["a" /* FilteredPostsComponent */] },
+    { path: 'posts/filter/:filter', component: __WEBPACK_IMPORTED_MODULE_5__filtered_posts_filtered_posts_component__["a" /* FilteredPostsComponent */] },
+    { path: 'posts/:id', component: __WEBPACK_IMPORTED_MODULE_2__post_post_component__["a" /* PostComponent */] },
+    { path: 'posts', component: __WEBPACK_IMPORTED_MODULE_1__posts_posts_component__["a" /* PostsComponent */] },
+    { path: 'category/add', component: __WEBPACK_IMPORTED_MODULE_4__add_category_add_category_component__["a" /* AddCategoryComponent */] }
 ];
 var routes = __WEBPACK_IMPORTED_MODULE_0__angular_router__["c" /* RouterModule */].forRoot(router);
+
+
+/***/ }),
+
+/***/ "../../../../../src/app/filtered-posts/filtered-posts.component.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/filtered-posts/filtered-posts.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<p>\n  filtered-posts works!\n</p>\n"
+
+/***/ }),
+
+/***/ "../../../../../src/app/filtered-posts/filtered-posts.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return FilteredPostsComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("../../../router/esm5/router.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_posts_service__ = __webpack_require__("../../../../../src/app/services/posts.service.ts");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var FilteredPostsComponent = (function () {
+    function FilteredPostsComponent(route, postsService) {
+        this.route = route;
+        this.postsService = postsService;
+    }
+    FilteredPostsComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.route.params.subscribe(function (params) {
+            _this.filter = params.filter;
+            _this.filter_by = params.filter_by;
+            if (_this.filter_by === 'author') {
+                _this.getPostsByAuthor(_this.filter);
+            }
+            else {
+                _this.getPostsByCategory(_this.filter);
+            }
+        });
+    };
+    FilteredPostsComponent.prototype.getPostsByCategory = function (category) {
+        this.postsService.getPostsByCategory(category)
+            .subscribe(function (res) {
+            console.log(res);
+        });
+    };
+    FilteredPostsComponent.prototype.getPostsByAuthor = function (author) {
+        this.postsService.getPostsByAuthor(author)
+            .subscribe(function (res) {
+            console.log(res);
+        });
+    };
+    FilteredPostsComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+            selector: 'app-filtered-posts',
+            template: __webpack_require__("../../../../../src/app/filtered-posts/filtered-posts.component.html"),
+            styles: [__webpack_require__("../../../../../src/app/filtered-posts/filtered-posts.component.css")],
+            providers: [__WEBPACK_IMPORTED_MODULE_2__services_posts_service__["a" /* PostsService */]]
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */],
+            __WEBPACK_IMPORTED_MODULE_2__services_posts_service__["a" /* PostsService */]])
+    ], FilteredPostsComponent);
+    return FilteredPostsComponent;
+}());
+
 
 
 /***/ }),
@@ -704,7 +803,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/post/post.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "\n<div class=\"post\" *ngIf=\"post\">\n\t<h1>{{post.title}}</h1>\n\t<p class=\"meta\">Posted in <a href=\"#\">{{post.category}}</a>, by {{post.author}}, at {{post.date}}</p>\n</div>"
+module.exports = "\n<div class=\"post\" *ngIf=\"post\">\n\t<img src=\"./uploads/{{post.mainImage}}\">\n\t<h1>{{post.title}}</h1>\n\t<p class=\"meta\">Posted in <a routerLink=\"/posts/filter/category/{{post.category}}\">{{post.category}}</a>, by <a routerLink=\"/posts/filter/author/{{post.author}}\">{{post.author}}</a>, at {{post.date}}</p>\n</div>"
 
 /***/ }),
 
@@ -786,7 +885,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/posts/posts.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"posts\">\n\t<div *ngFor=\"let post of posts\">\n\t\t<h2>\n\t\t\t<a routerLink=\"api/posts/{{post._id}}\">\n\t\t\t\t{{ post.title }}\n\t\t\t</a>\n\t\t</h2>\n\t\t<img src=\"./uploads/{{post.mainImage}}\">\n\t\t<p class=\"meta\">Posted in {{ post.category }}, by {{post.author}}, on {{ moment(post.date).format(\"MM-DD-YYYY\") }}</p>\n\t\t<p>{{post.body}}</p>\n\t\t<button routerLink=\"/posts/{{post._id}}\">Read More</button>\n\t</div>\n</div>"
+module.exports = "<div class=\"posts\">\n\t<div *ngFor=\"let post of posts\">\n\t\t<h2>\n\t\t\t<a routerLink=\"/posts/{{post._id}}\">\n\t\t\t\t{{ post.title }}\n\t\t\t</a>\n\t\t</h2>\n\t\t<img src=\"./uploads/{{post.mainImage}}\">\n\t\t<p class=\"meta\">Posted in <a routerLink=\"/posts/filter/category/{{post.category}}\">{{post.category}}</a>, by <a routerLink=\"/posts/filter/author/{{post.author}}\">{{post.author}}</a>, on {{ moment(post.date).format(\"MM-DD-YYYY\") }}</p>\n\t\t<p>{{post.body}}</p>\n\t\t<button routerLink=\"/posts/{{post._id}}\">Read More</button>\n\t</div>\n</div>"
 
 /***/ }),
 
@@ -817,9 +916,6 @@ var PostsComponent = (function () {
         this.name = 'Ahmed';
         this.now = __WEBPACK_IMPORTED_MODULE_1_moment__();
         this.moment = __WEBPACK_IMPORTED_MODULE_1_moment__;
-        //let now = moment(); // add this 2 of 4
-        console.log('hello world', this.now.format()); // add this 3 of 4
-        console.log(this.now.add(7, 'days').format()); // add this 4of 4
     }
     PostsComponent.prototype.ngOnInit = function () {
         this.getPosts();
@@ -830,7 +926,6 @@ var PostsComponent = (function () {
             .subscribe(function (res) {
             if (res.status === 'success') {
                 _this.posts = res.posts;
-                console.log(res);
             }
         });
     };
@@ -1171,6 +1266,14 @@ var PostsService = (function () {
     }
     PostsService.prototype.getPosts = function () {
         return this.http.get("/api/posts")
+            .map(function (res) { return res.json(); });
+    };
+    PostsService.prototype.getPostsByCategory = function (category) {
+        return this.http.get("/api/posts/filter_by_category/" + category)
+            .map(function (res) { return res.json(); });
+    };
+    PostsService.prototype.getPostsByAuthor = function (author) {
+        return this.http.get("api/posts/filter_by_author/" + author)
             .map(function (res) { return res.json(); });
     };
     PostsService = __decorate([
