@@ -10,7 +10,18 @@ export class PostsService {
 
 	getPosts() {
 		return this.http.get("/api/posts")
-			.map( res => res.json());
+			.map( res => res.json() );
+	}
+
+	getPostsByCategory( category: string ) {
+
+		return this.http.get(`/api/posts/filter_by_category/${category}`)
+			.map( res => res.json() );
+	}
+
+	getPostsByAuthor( author: string ) {
+		return this.http.get(`api/posts/filter_by_author/${author}`)
+			.map( res => res.json() );
 	}
 
 }
