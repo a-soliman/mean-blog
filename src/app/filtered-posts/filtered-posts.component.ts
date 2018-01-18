@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
+import * as moment from 'moment';
 
 import { PostsService } from '../services/posts.service';
 import { Post } from '../post';
@@ -16,6 +17,10 @@ export class FilteredPostsComponent implements OnInit {
 	  filter_by: string;
     filter   : string
     posts    : Array<Post>;
+    resultCount: number;
+
+    now = moment();
+    moment = moment
 
   	constructor( private route: ActivatedRoute,
                  private postsService: PostsService ) { }
@@ -41,6 +46,7 @@ export class FilteredPostsComponent implements OnInit {
         .subscribe((res) => {
           if ( res.success === true ) {
             this.posts = res.posts;
+            this.resultCount = this.posts.length;
           }
         })
     }
@@ -50,6 +56,7 @@ export class FilteredPostsComponent implements OnInit {
         .subscribe( (res) => {
           if ( res.success === true ) {
             this.posts = res.posts;
+            this.resultCount = this.posts.length;
           }
         })
     }
