@@ -11,6 +11,7 @@ import { FilteredPostsComponent } from './filtered-posts/filtered-posts.componen
 
 export const router: Routes = [
 	{ path: 'posts/add', component: AddPostComponent},
+	{ path: 'posts/filter/:filter_by/:filter', component: FilteredPostsComponent},
 	{ path: 'posts/filter/:filter', component: FilteredPostsComponent},
 	{ path: 'posts/:id', component: PostComponent },
 	{ path: 'posts', component: PostsComponent},
