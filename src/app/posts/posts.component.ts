@@ -16,11 +16,7 @@ export class PostsComponent implements OnInit {
   name = 'Ahmed';
 	now = moment();
   moment = moment
-  	constructor( private postsService: PostsService ) {
-      //let now = moment(); // add this 2 of 4
-    console.log('hello world', this.now.format()); // add this 3 of 4
-    console.log(this.now.add(7, 'days').format()); // add this 4of 4
-    }
+  	constructor( private postsService: PostsService ) {}
 
   	ngOnInit() {
   		this.getPosts();
@@ -30,8 +26,7 @@ export class PostsComponent implements OnInit {
   		this.postsService.getPosts()
   			.subscribe((res) => {
   				if ( res.status === 'success') {
-  					this.posts = res.posts
-  					console.log(res);
+  					this.posts = res.posts;
   				}
   			})
   	}

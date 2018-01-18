@@ -6,7 +6,7 @@
 			</a>
 		</h2>
 		<img src="./uploads/{{post.mainImage}}">
-		<p class="meta">Posted in <a routerLink="/posts/filter/{{post.category}}">{{post.category}}</a>, by {{post.author}}, on {{ moment(post.date).format("MM-DD-YYYY") }}</p>
+		<p class="meta">Posted in <a routerLink="/posts/filter/category/{{post.category}}">{{post.category}}</a>, by <a routerLink="/posts/filter/author/{{post.author}}">{{post.author}}</a>, on {{ moment(post.date).format("MM-DD-YYYY") }}</p>
 		<p>{{post.body}}</p>
 		<button routerLink="/posts/{{post._id}}">Read More</button>
 	</div>
