@@ -467,7 +467,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/filtered-posts/filtered-posts.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<p>\n  filtered-posts works!\n</p>\n"
+module.exports = "<div>\n\t<h3>Found {{resultCount}} results, filtering {{filter}}</h3>\n</div>\n\n<div class=\"posts\">\n\t<div *ngFor=\"let post of posts\">\n\t\t<h2>\n\t\t\t<a routerLink=\"/posts/{{post._id}}\">\n\t\t\t\t{{ post.title }}\n\t\t\t</a>\n\t\t</h2>\n\t\t<img src=\"./uploads/{{post.mainImage}}\">\n\t\t<p class=\"meta\">Posted in <a routerLink=\"/posts/filter/category/{{post.category}}\">{{post.category}}</a>, by <a routerLink=\"/posts/filter/author/{{post.author}}\">{{post.author}}</a>, on {{ moment(post.date).format(\"MM-DD-YYYY\") }}</p>\n\t\t<p>{{post.body}}</p>\n\t\t<button routerLink=\"/posts/{{post._id}}\">Read More</button>\n\t</div>\n</div>"
 
 /***/ }),
 
@@ -478,7 +478,9 @@ module.exports = "<p>\n  filtered-posts works!\n</p>\n"
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return FilteredPostsComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("../../../router/esm5/router.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_posts_service__ = __webpack_require__("../../../../../src/app/services/posts.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_moment__ = __webpack_require__("../../../../moment/moment.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_moment__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_posts_service__ = __webpack_require__("../../../../../src/app/services/posts.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -491,10 +493,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var FilteredPostsComponent = (function () {
     function FilteredPostsComponent(route, postsService) {
         this.route = route;
         this.postsService = postsService;
+        this.now = __WEBPACK_IMPORTED_MODULE_2_moment__();
+        this.moment = __WEBPACK_IMPORTED_MODULE_2_moment__;
     }
     FilteredPostsComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -510,15 +515,23 @@ var FilteredPostsComponent = (function () {
         });
     };
     FilteredPostsComponent.prototype.getPostsByCategory = function (category) {
+        var _this = this;
         this.postsService.getPostsByCategory(category)
             .subscribe(function (res) {
-            console.log(res);
+            if (res.success === true) {
+                _this.posts = res.posts;
+                _this.resultCount = _this.posts.length;
+            }
         });
     };
     FilteredPostsComponent.prototype.getPostsByAuthor = function (author) {
+        var _this = this;
         this.postsService.getPostsByAuthor(author)
             .subscribe(function (res) {
-            console.log(res);
+            if (res.success === true) {
+                _this.posts = res.posts;
+                _this.resultCount = _this.posts.length;
+            }
         });
     };
     FilteredPostsComponent = __decorate([
@@ -526,10 +539,10 @@ var FilteredPostsComponent = (function () {
             selector: 'app-filtered-posts',
             template: __webpack_require__("../../../../../src/app/filtered-posts/filtered-posts.component.html"),
             styles: [__webpack_require__("../../../../../src/app/filtered-posts/filtered-posts.component.css")],
-            providers: [__WEBPACK_IMPORTED_MODULE_2__services_posts_service__["a" /* PostsService */]]
+            providers: [__WEBPACK_IMPORTED_MODULE_3__services_posts_service__["a" /* PostsService */]]
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */],
-            __WEBPACK_IMPORTED_MODULE_2__services_posts_service__["a" /* PostsService */]])
+            __WEBPACK_IMPORTED_MODULE_3__services_posts_service__["a" /* PostsService */]])
     ], FilteredPostsComponent);
     return FilteredPostsComponent;
 }());
