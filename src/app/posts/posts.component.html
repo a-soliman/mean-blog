@@ -1,12 +1,12 @@
 <div class="posts">
 	<div *ngFor="let post of posts">
 		<h2>
-			<a routerLink="api/posts/{{post._id}}">
+			<a routerLink="/posts/{{post._id}}">
 				{{ post.title }}
 			</a>
 		</h2>
 		<img src="./uploads/{{post.mainImage}}">
-		<p class="meta">Posted in {{ post.category }}, by {{post.author}}, on {{ moment(post.date).format("MM-DD-YYYY") }}</p>
+		<p class="meta">Posted in <a routerLink="/posts/filter/{{post.category}}">{{post.category}}</a>, by {{post.author}}, on {{ moment(post.date).format("MM-DD-YYYY") }}</p>
 		<p>{{post.body}}</p>
 		<button routerLink="/posts/{{post._id}}">Read More</button>
 	</div>
