@@ -2,5 +2,5 @@
 <div class="post" *ngIf="post">
 	<img src="./uploads/{{post.mainImage}}">
 	<h1>{{post.title}}</h1>
-	<p class="meta">Posted in <a routerLink="/posts/filter/{{post.category}}">{{post.category}}</a>, by {{post.author}}, at {{post.date}}</p>
+	<p class="meta">Posted in <a routerLink="/posts/filter/category/{{post.category}}">{{post.category}}</a>, by <a routerLink="/posts/filter/author/{{post.author}}">{{post.author}}</a>, at {{post.date}}</p>
 </div>
