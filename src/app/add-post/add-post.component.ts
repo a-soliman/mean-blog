@@ -30,8 +30,7 @@ export class AddPostComponent implements OnInit {
       this.addPostForm = fb.group({
   			'title': [null, Validators.compose([ Validators.required, Validators.minLength(3) ])],
   			'category': [null],
-  			'body': [ null, Validators.compose([ Validators.required, Validators.minLength(20) ])],
-  			'author': [ null ]
+  			'body': [ null, Validators.compose([ Validators.required, Validators.minLength(20) ])]
   		});
   	}
 
