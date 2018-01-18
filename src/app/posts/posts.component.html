@@ -5,6 +5,7 @@
 				{{ post.title }}
 			</a>
 		</h2>
+		<img src="./uploads/{{post.mainImage}}">
 		<p class="meta">Posted in {{ post.category }}, by {{post.author}}, on {{ moment(post.date).format("MM-DD-YYYY") }}</p>
 		<p>{{post.body}}</p>
 		<button routerLink="/posts/{{post._id}}">Read More</button>
