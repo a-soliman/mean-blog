@@ -27,7 +27,7 @@ router.get('/', ( req, res ) => {
 	res.send({"messagee": "working"})
 });
 
-router.post('/user/register', upload.single('profileImage'), ( req, res ) => {
+router.post('/user/register', upload.single('profileImage'), ( req, res, next ) => {
 	
 	let name 		 = req.body.name;
 	let email 		 = req.body.email;
@@ -130,16 +130,17 @@ router.get('/posts/:id', (req, res, next ) => {
 	
 });
 
-router.post('/posts/add', ( req, res ) => {
+router.post('/posts/add', upload.single('mainImage'), ( req, res ) => {
 	let title 		= req.body.title;
 	let category 	= req.body.category;
 	let body 		= req.body.body;
 	let author 		= req.body.author;
-	let mainImage;
+	let mainImage 	= req.file ? req.file.filename : 'noPostImage.jpg';
 
+	console.log(req.file)
 	// form validation
 	req.checkBody('title', 'Title field is required.').notEmpty();
-	//req.checkBody('category', 'Category field is required').notEmpty();
+	req.checkBody('category', 'Category field is required').notEmpty();
 	req.checkBody('body', 'Body field is required.').notEmpty();
 	req.checkBody('author', 'Author field is required.').notEmpty();
 

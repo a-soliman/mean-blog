@@ -130,7 +130,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/add-post/add-post.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<h2 class=\"page-header\">Add Post</h2>\n\n<div class=\"success-message\" *ngIf=\"successMessage\">\n\t<div class=\"alert alert-success\">{{successMessage}}</div>\n</div>\n\n<div class=\"errors\" *ngIf=\"serverValidationErrors\">\n\t<div *ngFor=\"let error of serverValidationErrors\">\n\t\t<div class=\"alert alert-danger\">{{error.msg}}</div>\n\t</div>\n</div>\n\n<form [formGroup]=\"addPostForm\" (ngSubmit)=\"addPost(addPostForm.value)\" enctype=\"multipart/form-data\">\n\n\t<div class=\"form-group\">\n\t\t<label for=\"\">Title</label>\n\t\t<input formControlName=\"title\" type=\"text\" class=\"form-control\">\n\n\t\t<div class=\"alert alert-danger\" *ngIf=\"!addPostForm.controls['title'].valid && addPostForm.controls['title'].touched\">\n\t\t\tTitle is required..\n\t\t</div>\n\t</div>\n\n\t<div class=\"form-group\">\n\t\t<label for=\"\">Category</label>\n\t\t<select formControlName=\"category\" name=\"category\" id=\"category\" class=\"form-control\">\n\t\t\t<option *ngFor=\"let category of categories\" value=\"{{category}}\">{{category}}</option>\n\t\t</select>\n\t</div>\n\n\t<div class=\"form-group\">\n\t\t<label for=\"\">body</label>\n\t\t<textarea formControlName=\"body\" class=\"form-control\"></textarea>\n\n\t\t<div class=\"alert alert-danger\" *ngIf=\"!addPostForm.controls['body'].valid && addPostForm.controls['body'].touched\">\n\t\t\tbody is required..\n\t\t</div>\n\t</div>\n\n\t<div class=\"form-group\">\n\t\t<label for=\"\">Main Image</label>\n\t\t<input class=\"form-control\" name=\"mainImage\" formControlName=\"mainImage\" type=\"file\">\n\t</div>\n\n\t<input type=\"hidden\" formControlName=\"author\" value=\"user.username\">\n\n\n\n\t<input \n\t\ttype=\"submit\" \n\t\tclass=\"btn btn-primary\" \n\t\tvalue=\"Add Post\"\n\t\t[disabled]=\"!addPostForm.valid\"\n\t\t>\n</form>"
+module.exports = "<h2 class=\"page-header\">Add Post</h2>\n\n<div class=\"success-message\" *ngIf=\"successMessage\">\n\t<div class=\"alert alert-success\">{{successMessage}}</div>\n</div>\n\n<div class=\"errors\" *ngIf=\"serverValidationErrors\">\n\t<div *ngFor=\"let error of serverValidationErrors\">\n\t\t<div class=\"alert alert-danger\">{{error.msg}}</div>\n\t</div>\n</div>\n\n<form [formGroup]=\"addPostForm\" (ngSubmit)=\"addPost(addPostForm.value)\" enctype=\"multipart/form-data\">\n\n\t<div class=\"form-group\">\n\t\t<label for=\"\">Title</label>\n\t\t<input formControlName=\"title\" type=\"text\" class=\"form-control\">\n\n\t\t<div class=\"alert alert-danger\" *ngIf=\"!addPostForm.controls['title'].valid && addPostForm.controls['title'].touched\">\n\t\t\tTitle is required..\n\t\t</div>\n\t</div>\n\n\t<div class=\"form-group\">\n\t\t<label for=\"\">Category</label>\n\t\t<select formControlName=\"category\" name=\"category\" id=\"category\" class=\"form-control\">\n\t\t\t<option *ngFor=\"let category of categories\" value=\"{{category}}\">{{category}}</option>\n\t\t</select>\n\t</div>\n\n\t<div class=\"form-group\">\n\t\t<label for=\"\">body</label>\n\t\t<textarea formControlName=\"body\" class=\"form-control\"></textarea>\n\n\t\t<div class=\"alert alert-danger\" *ngIf=\"!addPostForm.controls['body'].valid && addPostForm.controls['body'].touched\">\n\t\t\tbody is required..\n\t\t</div>\n\t</div>\n\n\t<div class=\"form-group\">\n\t\t<label for=\"\">Main Image</label>\n\t\t<input class=\"form-control\" name=\"mainImage\" formControlName=\"mainImage\" type=\"file\" id=\"mainImage\">\n\t</div>\n\n\t<input type=\"hidden\" formControlName=\"author\" value=\"user.username\">\n\n\n\n\t<input \n\t\ttype=\"submit\" \n\t\tclass=\"btn btn-primary\" \n\t\tvalue=\"Add Post\"\n\t\t[disabled]=\"!addPostForm.valid\"\n\t\t>\n</form>"
 
 /***/ }),
 
@@ -159,11 +159,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 var AddPostComponent = (function () {
-    function AddPostComponent(fb, router, addPostService, addCategoryService) {
+    function AddPostComponent(fb, router, addPostService, addCategoryService, element) {
         this.fb = fb;
         this.router = router;
         this.addPostService = addPostService;
         this.addCategoryService = addCategoryService;
+        this.element = element;
         this.categories = [];
         this.serverValidationErrors = [];
         this.addPostForm = fb.group({
@@ -183,8 +184,17 @@ var AddPostComponent = (function () {
     };
     AddPostComponent.prototype.addPost = function (post) {
         var _this = this;
+        //image handeling
+        var files = this.element.nativeElement.querySelector('#mainImage').files;
+        var file = files[0];
+        var formData = new FormData();
+        formData.append('file', file);
+        Object.keys(post).forEach(function (item) {
+            formData.append('item', post[item]);
+        });
+        //end imageHandeling
         post.author = this.user.username;
-        this.addPostService.addPost(post)
+        this.addPostService.addPost(formData)
             .subscribe(function (res) {
             console.log(res);
             if (res.success === true) {
@@ -219,7 +229,8 @@ var AddPostComponent = (function () {
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormBuilder */],
             __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */],
             __WEBPACK_IMPORTED_MODULE_3__services_add_post_service__["a" /* AddPostService */],
-            __WEBPACK_IMPORTED_MODULE_4__services_add_category_service__["a" /* AddCategoryService */]])
+            __WEBPACK_IMPORTED_MODULE_4__services_add_category_service__["a" /* AddCategoryService */],
+            __WEBPACK_IMPORTED_MODULE_0__angular_core__["t" /* ElementRef */]])
     ], AddPostComponent);
     return AddPostComponent;
 }());

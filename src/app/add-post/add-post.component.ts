@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
@@ -23,9 +23,11 @@ export class AddPostComponent implements OnInit {
   	constructor( private fb: FormBuilder, 
   				 private router:Router,
   				 private addPostService: AddPostService,
-           private addCategoryService: AddCategoryService 
+           private addCategoryService: AddCategoryService,
+           private element: ElementRef
   				) { 
-  		this.addPostForm = fb.group({
+  		
+      this.addPostForm = fb.group({
   			'title': [null, Validators.compose([ Validators.required, Validators.minLength(3) ])],
   			'category': [null],
   			'body': [ null, Validators.compose([ Validators.required, Validators.minLength(20) ])],
@@ -45,7 +47,18 @@ export class AddPostComponent implements OnInit {
   	}
 
   	addPost( post ) {
-  		post.author = this.user.username;
+      //image handeling
+      let files = this.element.nativeElement.querySelector('#mainImage').files;
+      let file = files[0];
+      
+      let formData = new FormData();
+      formData.append('file', file);
+      Object.keys(post).forEach((item) => {
+        formData.append('item', post[item]);
+      })
+      //end imageHandeling
+  		
+      post.author = this.user.username;
   		this.addPostService.addPost(post)
   			.subscribe((res) => {
   				console.log(res)
