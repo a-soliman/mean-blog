@@ -3,4 +3,6 @@
 	<img src="./uploads/{{post.mainImage}}">
 	<h1>{{post.title}}</h1>
 	<p class="meta">Posted in <a routerLink="/posts/filter/category/{{post.category}}">{{post.category}}</a>, by <a routerLink="/posts/filter/author/{{post.author}}">{{post.author}}</a>, at {{post.date}}</p>
+
+	<p>{{ post.body }}</p>
 </div>

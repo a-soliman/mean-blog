@@ -17,6 +17,79 @@ webpackEmptyAsyncContext.id = "../../../../../src/$$_lazy_route_resource lazy re
 
 /***/ }),
 
+/***/ "../../../../../src/app/account/account.component.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/account/account.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<h2 class=\"page-header\">Update Account</h2>\n\n<div class=\"success-message\" *ngIf=\"successMessage\">\n\t<div class=\"alert alert-success\">{{successMessage}}</div>\n</div>\n\n<div class=\"errors\" *ngIf=\"serverValidationErrors\">\n\t<div *ngFor=\"let error of serverValidationErrors\">\n\t\t<div class=\"alert alert-danger\">{{error.msg}}</div>\n\t</div>\n</div>\n\n<form [formGroup]=\"updateUserForm\" (ngSubmit)=\"update(updateUserForm.value)\" enctype=\"multipart/form-data\" >\n\t<div class=\"form-group\">\n\t\t<label for=\"\">Name</label>\n\t\t<input formControlName=\"name\" type=\"text\" class=\"form-control\" value=\"{{user.name}}\">\n\n\t\t<div class=\"alert alert-danger\" *ngIf=\"!updateUserForm.controls['name'].valid && updateUserForm.controls['name'].touched\">\n\t\t\tName is required..\n\t\t</div>\n\t</div>\n\n\t<div class=\"form-group\">\n\t\t<label for=\"\">Email</label>\n\t\t<input formControlName=\"email\" type=\"email\" class=\"form-control\" value=\"{{user.email}}\">\n\n\t\t<div class=\"alert alert-danger\" *ngIf=\"!updateUserForm.controls['email'].valid && updateUserForm.controls['email'].touched\">\n\t\t\tEmail is required..\n\t\t</div>\n\t</div>\n\n\t<div class=\"form-group\">\n\t\t<label for=\"\">Username</label>\n\t\t<input formControlName=\"username\" type=\"text\" class=\"form-control\" value=\"{{user.username}}\">\n\n\t\t<div class=\"alert alert-danger\" *ngIf=\"!updateUserForm.controls['username'].valid && updateUserForm.controls['username'].touched\">\n\t\t\tUsername is required..\n\t\t</div>\n\t</div>\n\n\t<div class=\"form-group\">\n\t\t<label for=\"\">Password</label>\n\t\t<input formControlName=\"password\" type=\"password\" class=\"form-control\" value=\"{{user.password}}\">\n\n\t\t<div class=\"alert alert-danger\" *ngIf=\"!updateUserForm.controls['password'].valid && updateUserForm.controls['password'].touched\">\n\t\t\tPassword is required..\n\t\t</div>\n\t</div>\n\n\t<div class=\"form-group\">\n\t\t<label for=\"\">ConfirmPassword</label>\n\t\t<input formControlName=\"password2\" type=\"password\" class=\"form-control\" value=\"{{user.value}}\">\n\n\t\t<div class=\"alert alert-danger\" *ngIf=\"!updateUserForm.controls['password2'].valid && updateUserForm.controls['password2'].touched\">\n\t\t\tPassword is required..\n\t\t</div>\n\t</div>\n\n\t<div class=\"form-group\">\n\t\t<label for=\"\">Profile Image</label>\n\t\t<input name=\"profileImage\" type=\"file\" class=\"form-control\" id=\"profileImage\" >\n\t</div>\n\n\t<input \n\t\ttype=\"submit\" \n\t\tclass=\"btn btn-primary\" \n\t\tvalue=\"Update\"\n\t\t[disabled]=\"!updateUserForm.valid\"\n\t\t>\n</form>"
+
+/***/ }),
+
+/***/ "../../../../../src/app/account/account.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AccountComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_forms__ = __webpack_require__("../../../forms/esm5/forms.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var AccountComponent = (function () {
+    function AccountComponent(fb) {
+        this.fb = fb;
+        this.updateUserForm = fb.group({
+            'name': [null, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["d" /* Validators */].compose([__WEBPACK_IMPORTED_MODULE_1__angular_forms__["d" /* Validators */].required, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["d" /* Validators */].minLength(2), __WEBPACK_IMPORTED_MODULE_1__angular_forms__["d" /* Validators */].maxLength(20)])],
+            'email': [null, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["d" /* Validators */].compose([__WEBPACK_IMPORTED_MODULE_1__angular_forms__["d" /* Validators */].required, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["d" /* Validators */].email])],
+            'username': [null, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["d" /* Validators */].compose([__WEBPACK_IMPORTED_MODULE_1__angular_forms__["d" /* Validators */].required, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["d" /* Validators */].minLength(2), __WEBPACK_IMPORTED_MODULE_1__angular_forms__["d" /* Validators */].maxLength(10)])],
+            'password': [null, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["d" /* Validators */].compose([__WEBPACK_IMPORTED_MODULE_1__angular_forms__["d" /* Validators */].required, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["d" /* Validators */].minLength(6)])],
+            'password2': [null, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["d" /* Validators */].compose([__WEBPACK_IMPORTED_MODULE_1__angular_forms__["d" /* Validators */].required, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["d" /* Validators */].minLength(6)])]
+        });
+    }
+    AccountComponent.prototype.ngOnInit = function () {
+        this.user = JSON.parse(localStorage.getItem('user')) || null;
+        console.log(this.user);
+    };
+    AccountComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+            selector: 'app-account',
+            template: __webpack_require__("../../../../../src/app/account/account.component.html"),
+            styles: [__webpack_require__("../../../../../src/app/account/account.component.css")]
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormBuilder */]])
+    ], AccountComponent);
+    return AccountComponent;
+}());
+
+
+
+/***/ }),
+
 /***/ "../../../../../src/app/add-category/add-category.component.css":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -357,12 +430,14 @@ var AppComponent = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__add_category_add_category_component__ = __webpack_require__("../../../../../src/app/add-category/add-category.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__post_post_component__ = __webpack_require__("../../../../../src/app/post/post.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__filtered_posts_filtered_posts_component__ = __webpack_require__("../../../../../src/app/filtered-posts/filtered-posts.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__account_account_component__ = __webpack_require__("../../../../../src/app/account/account.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -394,7 +469,8 @@ var AppModule = (function () {
                 __WEBPACK_IMPORTED_MODULE_12__add_post_add_post_component__["a" /* AddPostComponent */],
                 __WEBPACK_IMPORTED_MODULE_13__add_category_add_category_component__["a" /* AddCategoryComponent */],
                 __WEBPACK_IMPORTED_MODULE_14__post_post_component__["a" /* PostComponent */],
-                __WEBPACK_IMPORTED_MODULE_15__filtered_posts_filtered_posts_component__["a" /* FilteredPostsComponent */]
+                __WEBPACK_IMPORTED_MODULE_15__filtered_posts_filtered_posts_component__["a" /* FilteredPostsComponent */],
+                __WEBPACK_IMPORTED_MODULE_16__account_account_component__["a" /* AccountComponent */]
             ],
             imports: [
                 __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
@@ -426,6 +502,8 @@ var AppModule = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__add_post_add_post_component__ = __webpack_require__("../../../../../src/app/add-post/add-post.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__add_category_add_category_component__ = __webpack_require__("../../../../../src/app/add-category/add-category.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__filtered_posts_filtered_posts_component__ = __webpack_require__("../../../../../src/app/filtered-posts/filtered-posts.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__account_account_component__ = __webpack_require__("../../../../../src/app/account/account.component.ts");
+
 
 
 
@@ -438,7 +516,8 @@ var router = [
     { path: 'posts/filter/:filter', component: __WEBPACK_IMPORTED_MODULE_5__filtered_posts_filtered_posts_component__["a" /* FilteredPostsComponent */] },
     { path: 'posts/:id', component: __WEBPACK_IMPORTED_MODULE_2__post_post_component__["a" /* PostComponent */] },
     { path: 'posts', component: __WEBPACK_IMPORTED_MODULE_1__posts_posts_component__["a" /* PostsComponent */] },
-    { path: 'category/add', component: __WEBPACK_IMPORTED_MODULE_4__add_category_add_category_component__["a" /* AddCategoryComponent */] }
+    { path: 'category/add', component: __WEBPACK_IMPORTED_MODULE_4__add_category_add_category_component__["a" /* AddCategoryComponent */] },
+    { path: 'account', component: __WEBPACK_IMPORTED_MODULE_6__account_account_component__["a" /* AccountComponent */] }
 ];
 var routes = __WEBPACK_IMPORTED_MODULE_0__angular_router__["c" /* RouterModule */].forRoot(router);
 
@@ -733,7 +812,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/nav/nav.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"navbar navbar-inverse\">\n\t<div class=\"container\">\n\t\t<div class=\"navbar-header\">\n\t\t\t<button class=\"navbar-toggle\" type=\"button\" data-toggle=\"collapse\" data-target=\".navbar-collapse\">\n\t\t\t\t<span class=\"sr-only\">Toggle navigation</span>\n\t\t\t\t<span class=\"icon-bar\"></span>\n\t\t\t\t<span class=\"icon-bar\"></span>\n\t\t\t\t<span class=\"icon-bar\"></span>\n\t\t\t</button>\n\n\t\t\t<a href=\"#\" class=\"navbar-brand\">MEANBLOG</a>\n\t\t</div>\n\t\t<div class=\"navbar-collapse collapse\">\n\t\t\t<ul class=\"nav navbar-nav\">\n\t\t\t\t<li *ngIf=\"user\"><a href=\"#\" (click)=\"changeRoute('members')\">Members</a></li>\n\t\t\t\t<li *ngIf=\"!user\"><a href=\"#\" (click)=\"changeRoute('register')\">Register</a></li>\n\t\t\t\t<li *ngIf=\"!user\"><a href=\"#\" (click)=\"changeRoute('login')\">Login</a></li>\n\t\t\t</ul>\n\t\t\t<ul class=\"nav navbar-nav navbar-right\">\n\t\t\t\t<li *ngIf=\"user\"><a href=\"#\" (click)=\"changeRoute('logout')\">Logout</a></li>\n\t\t\t</ul>\n\t\t</div>\n\t</div>\n</div>\n\n"
+module.exports = "<div class=\"navbar navbar-inverse\">\n\t<div class=\"container\">\n\t\t<div class=\"navbar-header\">\n\t\t\t<button class=\"navbar-toggle\" type=\"button\" data-toggle=\"collapse\" data-target=\".navbar-collapse\">\n\t\t\t\t<span class=\"sr-only\">Toggle navigation</span>\n\t\t\t\t<span class=\"icon-bar\"></span>\n\t\t\t\t<span class=\"icon-bar\"></span>\n\t\t\t\t<span class=\"icon-bar\"></span>\n\t\t\t</button>\n\n\t\t\t<a href=\"#\" class=\"navbar-brand\">MEANBLOG</a>\n\t\t</div>\n\t\t<div class=\"navbar-collapse collapse\">\n\t\t\t<ul class=\"nav navbar-nav\">\n\t\t\t\t<li *ngIf=\"user\"><a href=\"#\" (click)=\"changeRoute('members')\">Members</a></li>\n\t\t\t\t<li *ngIf=\"!user\"><a href=\"#\" (click)=\"changeRoute('register')\">Register</a></li>\n\t\t\t\t<li *ngIf=\"!user\"><a href=\"#\" (click)=\"changeRoute('login')\">Login</a></li>\n\t\t\t</ul>\n\t\t\t<ul class=\"nav navbar-nav navbar-right\"  *ngIf=\"user\">\n\t\t\t\t<li class=\"dropdown\" >\n\t\t\t\t    <a class=\"dropdown-toggle\" data-toggle=\"dropdown\" href=\"#\">\n\t\t\t\t      {{ user.username}} <span class=\"caret\"></span>\n\t\t\t\t    </a>\n\t\t\t\t    <ul class=\"dropdown-menu\">\n\t\t\t\t      \t<li>\n\t\t\t\t      \t\t<a href=\"\" (click)=\"changeRoute('logout')\">Logout</a>\n\t\t\t\t      \t</li>\n\t\t\t\t      \t<li>\n\t\t\t\t      \t\t<a routerLink=\"/account\">My Account</a>\n\t\t\t\t      \t</li>\n\t\t\t\t    </ul>\n\t\t\t\t  </li>\n\t\t\t</ul>\n\t\t</div>\n\t</div>\n</div>\n\n"
 
 /***/ }),
 
@@ -815,7 +894,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/post/post.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "\n<div class=\"post\" *ngIf=\"post\">\n\t<img src=\"./uploads/{{post.mainImage}}\">\n\t<h1>{{post.title}}</h1>\n\t<p class=\"meta\">Posted in <a routerLink=\"/posts/filter/category/{{post.category}}\">{{post.category}}</a>, by <a routerLink=\"/posts/filter/author/{{post.author}}\">{{post.author}}</a>, at {{post.date}}</p>\n</div>"
+module.exports = "\n<div class=\"post\" *ngIf=\"post\">\n\t<img src=\"./uploads/{{post.mainImage}}\">\n\t<h1>{{post.title}}</h1>\n\t<p class=\"meta\">Posted in <a routerLink=\"/posts/filter/category/{{post.category}}\">{{post.category}}</a>, by <a routerLink=\"/posts/filter/author/{{post.author}}\">{{post.author}}</a>, at {{post.date}}</p>\n\n\t<p>{{ post.body }}</p>\n</div>"
 
 /***/ }),
 
