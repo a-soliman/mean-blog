@@ -13,6 +13,7 @@ import { User } from '../user';
   providers: [ AddPostService, AddCategoryService ]
 })
 export class AddPostComponent implements OnInit {
+  public editorValue: string = '';
 
 	addPostForm              : FormGroup;
   categories               : Array<any> = [];

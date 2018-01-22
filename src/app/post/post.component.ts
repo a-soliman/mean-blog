@@ -29,8 +29,7 @@ export class PostComponent implements OnInit {
   	getPost( id ) {
   		this.postService.getPost(id)
   			.subscribe((res) => {
-  				this.post = res.post
-  				console.log(res.post)
+  				this.post = res.post;
   			})
   	}
 

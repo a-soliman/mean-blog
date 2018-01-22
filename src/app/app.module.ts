@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CKEditorModule } from 'ngx-ckeditor';
 
 import { routes } from './app.router';
 
@@ -39,7 +40,8 @@ import { AccountComponent } from './account/account.component';
     HttpModule,
     FormsModule, 
     ReactiveFormsModule,
-    routes
+    routes,
+    CKEditorModule
   ],
   providers: [SimpleService],
   bootstrap: [AppComponent]

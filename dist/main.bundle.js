@@ -64,11 +64,11 @@ var AccountComponent = (function () {
     function AccountComponent(fb) {
         this.fb = fb;
         this.updateUserForm = fb.group({
-            'name': [null, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["d" /* Validators */].compose([__WEBPACK_IMPORTED_MODULE_1__angular_forms__["d" /* Validators */].required, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["d" /* Validators */].minLength(2), __WEBPACK_IMPORTED_MODULE_1__angular_forms__["d" /* Validators */].maxLength(20)])],
-            'email': [null, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["d" /* Validators */].compose([__WEBPACK_IMPORTED_MODULE_1__angular_forms__["d" /* Validators */].required, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["d" /* Validators */].email])],
-            'username': [null, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["d" /* Validators */].compose([__WEBPACK_IMPORTED_MODULE_1__angular_forms__["d" /* Validators */].required, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["d" /* Validators */].minLength(2), __WEBPACK_IMPORTED_MODULE_1__angular_forms__["d" /* Validators */].maxLength(10)])],
-            'password': [null, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["d" /* Validators */].compose([__WEBPACK_IMPORTED_MODULE_1__angular_forms__["d" /* Validators */].required, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["d" /* Validators */].minLength(6)])],
-            'password2': [null, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["d" /* Validators */].compose([__WEBPACK_IMPORTED_MODULE_1__angular_forms__["d" /* Validators */].required, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["d" /* Validators */].minLength(6)])]
+            'name': [null, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].compose([__WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].required, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].minLength(2), __WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].maxLength(20)])],
+            'email': [null, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].compose([__WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].required, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].email])],
+            'username': [null, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].compose([__WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].required, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].minLength(2), __WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].maxLength(10)])],
+            'password': [null, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].compose([__WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].required, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].minLength(6)])],
+            'password2': [null, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].compose([__WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].required, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].minLength(6)])]
         });
     }
     AccountComponent.prototype.ngOnInit = function () {
@@ -76,12 +76,12 @@ var AccountComponent = (function () {
         console.log(this.user);
     };
     AccountComponent = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'app-account',
             template: __webpack_require__("../../../../../src/app/account/account.component.html"),
             styles: [__webpack_require__("../../../../../src/app/account/account.component.css")]
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormBuilder */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["FormBuilder"]])
     ], AccountComponent);
     return AccountComponent;
 }());
@@ -144,7 +144,7 @@ var AddCategoryComponent = (function () {
         this.fb = fb;
         this.serverValidationErrors = [];
         this.addCategoryForm = fb.group({
-            'name': [null, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["d" /* Validators */].compose([__WEBPACK_IMPORTED_MODULE_1__angular_forms__["d" /* Validators */].required, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["d" /* Validators */].minLength(3)])]
+            'name': [null, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].compose([__WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].required, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].minLength(3)])]
         });
     }
     AddCategoryComponent.prototype.ngOnInit = function () {
@@ -165,7 +165,7 @@ var AddCategoryComponent = (function () {
         });
     };
     AddCategoryComponent = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'app-add-category',
             template: __webpack_require__("../../../../../src/app/add-category/add-category.component.html"),
             styles: [__webpack_require__("../../../../../src/app/add-category/add-category.component.css")],
@@ -173,7 +173,7 @@ var AddCategoryComponent = (function () {
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_3__services_add_category_service__["a" /* AddCategoryService */],
             __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */],
-            __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormBuilder */]])
+            __WEBPACK_IMPORTED_MODULE_1__angular_forms__["FormBuilder"]])
     ], AddCategoryComponent);
     return AddCategoryComponent;
 }());
@@ -203,7 +203,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/add-post/add-post.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<h2 class=\"page-header\">Add Post</h2>\n\n<div class=\"success-message\" *ngIf=\"successMessage\">\n\t<div class=\"alert alert-success\">{{successMessage}}</div>\n</div>\n\n<div class=\"errors\" *ngIf=\"serverValidationErrors\">\n\t<div *ngFor=\"let error of serverValidationErrors\">\n\t\t<div class=\"alert alert-danger\">{{error.msg}}</div>\n\t</div>\n</div>\n\n<form [formGroup]=\"addPostForm\" (ngSubmit)=\"addPost(addPostForm.value)\" enctype=\"multipart/form-data\">\n\n\t<div class=\"form-group\">\n\t\t<label for=\"\">Title</label>\n\t\t<input formControlName=\"title\" type=\"text\" class=\"form-control\">\n\n\t\t<div class=\"alert alert-danger\" *ngIf=\"!addPostForm.controls['title'].valid && addPostForm.controls['title'].touched\">\n\t\t\tTitle is required..\n\t\t</div>\n\t</div>\n\n\t<div class=\"form-group\">\n\t\t<label for=\"\">Category</label>\n\t\t<select formControlName=\"category\" name=\"category\" id=\"category\" class=\"form-control\">\n\t\t\t<option *ngFor=\"let category of categories\" value=\"{{category}}\">{{category}}</option>\n\t\t</select>\n\t</div>\n\n\t<div class=\"form-group\">\n\t\t<label for=\"\">body</label>\n\t\t<textarea formControlName=\"body\" class=\"form-control\"></textarea>\n\n\t\t<div class=\"alert alert-danger\" *ngIf=\"!addPostForm.controls['body'].valid && addPostForm.controls['body'].touched\">\n\t\t\tbody is required..\n\t\t</div>\n\t</div>\n\n\t<div class=\"form-group\">\n\t\t<label for=\"\">Main Image</label>\n\t\t<input class=\"form-control\" name=\"mainImage\"  type=\"file\" id=\"mainImage\">\n\t</div>\n\n\t<input \n\t\ttype=\"submit\" \n\t\tclass=\"btn btn-primary\" \n\t\tvalue=\"Add Post\"\n\t\t[disabled]=\"!addPostForm.valid\"\n\t\t>\n</form>"
+module.exports = "<h2 class=\"page-header\">Add Post</h2>\n\n\n\n<div class=\"success-message\" *ngIf=\"successMessage\">\n\t<div class=\"alert alert-success\">{{successMessage}}</div>\n</div>\n\n<div class=\"errors\" *ngIf=\"serverValidationErrors\">\n\t<div *ngFor=\"let error of serverValidationErrors\">\n\t\t<div class=\"alert alert-danger\">{{error.msg}}</div>\n\t</div>\n</div>\n\n<form [formGroup]=\"addPostForm\" (ngSubmit)=\"addPost(addPostForm.value)\" enctype=\"multipart/form-data\">\n\n\t<div class=\"form-group\">\n\t\t<label for=\"\">Title</label>\n\t\t<input formControlName=\"title\" type=\"text\" class=\"form-control\">\n\n\t\t<div class=\"alert alert-danger\" *ngIf=\"!addPostForm.controls['title'].valid && addPostForm.controls['title'].touched\">\n\t\t\tTitle is required..\n\t\t</div>\n\t</div>\n\n\t<div class=\"form-group\">\n\t\t<label for=\"\">Category</label>\n\t\t<select formControlName=\"category\" name=\"category\" id=\"category\" class=\"form-control\">\n\t\t\t<option *ngFor=\"let category of categories\" value=\"{{category}}\">{{category}}</option>\n\t\t</select>\n\t</div>\n\n\t<div class=\"form-group\">\n\t\t<label for=\"\">body</label>\n\t\t<ck-editor formControlName=\"body\" name=\"editor1\" [(ngModel)]=\"editorValue\" skin=\"moono-lisa\" lang=\"en\" [fullPage]=\"false\"></ck-editor>\n\n\t\t<div class=\"alert alert-danger\" *ngIf=\"!addPostForm.controls['body'].valid && addPostForm.controls['body'].touched\">\n\t\t\tbody is required..\n\t\t</div>\n\t</div>\n\n\t<div class=\"form-group\">\n\t\t<label for=\"\">Main Image</label>\n\t\t<input class=\"form-control\" name=\"mainImage\"  type=\"file\" id=\"mainImage\">\n\t</div>\n\n\t<input \n\t\ttype=\"submit\" \n\t\tclass=\"btn btn-primary\" \n\t\tvalue=\"Add Post\"\n\t\t[disabled]=\"!addPostForm.valid\"\n\t\t>\n</form>"
 
 /***/ }),
 
@@ -238,12 +238,13 @@ var AddPostComponent = (function () {
         this.addPostService = addPostService;
         this.addCategoryService = addCategoryService;
         this.element = element;
+        this.editorValue = '';
         this.categories = [];
         this.serverValidationErrors = [];
         this.addPostForm = fb.group({
-            'title': [null, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["d" /* Validators */].compose([__WEBPACK_IMPORTED_MODULE_1__angular_forms__["d" /* Validators */].required, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["d" /* Validators */].minLength(3)])],
+            'title': [null, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].compose([__WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].required, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].minLength(3)])],
             'category': [null],
-            'body': [null, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["d" /* Validators */].compose([__WEBPACK_IMPORTED_MODULE_1__angular_forms__["d" /* Validators */].required, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["d" /* Validators */].minLength(20)])]
+            'body': [null, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].compose([__WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].required, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].minLength(20)])]
         });
     }
     AddPostComponent.prototype.ngOnInit = function () {
@@ -292,17 +293,17 @@ var AddPostComponent = (function () {
         });
     };
     AddPostComponent = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'app-add-post',
             template: __webpack_require__("../../../../../src/app/add-post/add-post.component.html"),
             styles: [__webpack_require__("../../../../../src/app/add-post/add-post.component.css")],
             providers: [__WEBPACK_IMPORTED_MODULE_3__services_add_post_service__["a" /* AddPostService */], __WEBPACK_IMPORTED_MODULE_4__services_add_category_service__["a" /* AddCategoryService */]]
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormBuilder */],
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["FormBuilder"],
             __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */],
             __WEBPACK_IMPORTED_MODULE_3__services_add_post_service__["a" /* AddPostService */],
             __WEBPACK_IMPORTED_MODULE_4__services_add_category_service__["a" /* AddCategoryService */],
-            __WEBPACK_IMPORTED_MODULE_0__angular_core__["t" /* ElementRef */]])
+            __WEBPACK_IMPORTED_MODULE_0__angular_core__["ElementRef"]])
     ], AddPostComponent);
     return AddPostComponent;
 }());
@@ -390,11 +391,11 @@ var AppComponent = (function () {
         });
     };
     __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["P" /* Output */])(),
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Output"])(),
         __metadata("design:type", Object)
     ], AppComponent.prototype, "user", void 0);
     AppComponent = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'app-root',
             template: __webpack_require__("../../../../../src/app/app.component.html"),
             styles: [__webpack_require__("../../../../../src/app/app.component.css")],
@@ -418,19 +419,21 @@ var AppComponent = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_http__ = __webpack_require__("../../../http/esm5/http.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_forms__ = __webpack_require__("../../../forms/esm5/forms.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__app_router__ = __webpack_require__("../../../../../src/app/app.router.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__app_component__ = __webpack_require__("../../../../../src/app/app.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__services_simple_service__ = __webpack_require__("../../../../../src/app/services/simple.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__nav_nav_component__ = __webpack_require__("../../../../../src/app/nav/nav.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__members_members_component__ = __webpack_require__("../../../../../src/app/members/members.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__register_register_component__ = __webpack_require__("../../../../../src/app/register/register.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__login_login_component__ = __webpack_require__("../../../../../src/app/login/login.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__posts_posts_component__ = __webpack_require__("../../../../../src/app/posts/posts.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__add_post_add_post_component__ = __webpack_require__("../../../../../src/app/add-post/add-post.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__add_category_add_category_component__ = __webpack_require__("../../../../../src/app/add-category/add-category.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__post_post_component__ = __webpack_require__("../../../../../src/app/post/post.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__filtered_posts_filtered_posts_component__ = __webpack_require__("../../../../../src/app/filtered-posts/filtered-posts.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__account_account_component__ = __webpack_require__("../../../../../src/app/account/account.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_ngx_ckeditor__ = __webpack_require__("../../../../ngx-ckeditor/lib/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_ngx_ckeditor___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_ngx_ckeditor__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__app_router__ = __webpack_require__("../../../../../src/app/app.router.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__app_component__ = __webpack_require__("../../../../../src/app/app.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__services_simple_service__ = __webpack_require__("../../../../../src/app/services/simple.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__nav_nav_component__ = __webpack_require__("../../../../../src/app/nav/nav.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__members_members_component__ = __webpack_require__("../../../../../src/app/members/members.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__register_register_component__ = __webpack_require__("../../../../../src/app/register/register.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__login_login_component__ = __webpack_require__("../../../../../src/app/login/login.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__posts_posts_component__ = __webpack_require__("../../../../../src/app/posts/posts.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__add_post_add_post_component__ = __webpack_require__("../../../../../src/app/add-post/add-post.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__add_category_add_category_component__ = __webpack_require__("../../../../../src/app/add-category/add-category.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__post_post_component__ = __webpack_require__("../../../../../src/app/post/post.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__filtered_posts_filtered_posts_component__ = __webpack_require__("../../../../../src/app/filtered-posts/filtered-posts.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__account_account_component__ = __webpack_require__("../../../../../src/app/account/account.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -454,33 +457,35 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
+
 var AppModule = (function () {
     function AppModule() {
     }
     AppModule = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["I" /* NgModule */])({
+        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["NgModule"])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_5__app_component__["a" /* AppComponent */],
-                __WEBPACK_IMPORTED_MODULE_7__nav_nav_component__["a" /* NavComponent */],
-                __WEBPACK_IMPORTED_MODULE_8__members_members_component__["a" /* MembersComponent */],
-                __WEBPACK_IMPORTED_MODULE_9__register_register_component__["a" /* RegisterComponent */],
-                __WEBPACK_IMPORTED_MODULE_10__login_login_component__["a" /* LoginComponent */],
-                __WEBPACK_IMPORTED_MODULE_11__posts_posts_component__["a" /* PostsComponent */],
-                __WEBPACK_IMPORTED_MODULE_12__add_post_add_post_component__["a" /* AddPostComponent */],
-                __WEBPACK_IMPORTED_MODULE_13__add_category_add_category_component__["a" /* AddCategoryComponent */],
-                __WEBPACK_IMPORTED_MODULE_14__post_post_component__["a" /* PostComponent */],
-                __WEBPACK_IMPORTED_MODULE_15__filtered_posts_filtered_posts_component__["a" /* FilteredPostsComponent */],
-                __WEBPACK_IMPORTED_MODULE_16__account_account_component__["a" /* AccountComponent */]
+                __WEBPACK_IMPORTED_MODULE_6__app_component__["a" /* AppComponent */],
+                __WEBPACK_IMPORTED_MODULE_8__nav_nav_component__["a" /* NavComponent */],
+                __WEBPACK_IMPORTED_MODULE_9__members_members_component__["a" /* MembersComponent */],
+                __WEBPACK_IMPORTED_MODULE_10__register_register_component__["a" /* RegisterComponent */],
+                __WEBPACK_IMPORTED_MODULE_11__login_login_component__["a" /* LoginComponent */],
+                __WEBPACK_IMPORTED_MODULE_12__posts_posts_component__["a" /* PostsComponent */],
+                __WEBPACK_IMPORTED_MODULE_13__add_post_add_post_component__["a" /* AddPostComponent */],
+                __WEBPACK_IMPORTED_MODULE_14__add_category_add_category_component__["a" /* AddCategoryComponent */],
+                __WEBPACK_IMPORTED_MODULE_15__post_post_component__["a" /* PostComponent */],
+                __WEBPACK_IMPORTED_MODULE_16__filtered_posts_filtered_posts_component__["a" /* FilteredPostsComponent */],
+                __WEBPACK_IMPORTED_MODULE_17__account_account_component__["a" /* AccountComponent */]
             ],
             imports: [
                 __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
                 __WEBPACK_IMPORTED_MODULE_2__angular_http__["b" /* HttpModule */],
-                __WEBPACK_IMPORTED_MODULE_3__angular_forms__["b" /* FormsModule */],
-                __WEBPACK_IMPORTED_MODULE_3__angular_forms__["c" /* ReactiveFormsModule */],
-                __WEBPACK_IMPORTED_MODULE_4__app_router__["a" /* routes */]
+                __WEBPACK_IMPORTED_MODULE_3__angular_forms__["FormsModule"],
+                __WEBPACK_IMPORTED_MODULE_3__angular_forms__["ReactiveFormsModule"],
+                __WEBPACK_IMPORTED_MODULE_5__app_router__["a" /* routes */],
+                __WEBPACK_IMPORTED_MODULE_4_ngx_ckeditor__["CKEditorModule"]
             ],
-            providers: [__WEBPACK_IMPORTED_MODULE_6__services_simple_service__["a" /* SimpleService */]],
-            bootstrap: [__WEBPACK_IMPORTED_MODULE_5__app_component__["a" /* AppComponent */]]
+            providers: [__WEBPACK_IMPORTED_MODULE_7__services_simple_service__["a" /* SimpleService */]],
+            bootstrap: [__WEBPACK_IMPORTED_MODULE_6__app_component__["a" /* AppComponent */]]
         })
     ], AppModule);
     return AppModule;
@@ -613,7 +618,7 @@ var FilteredPostsComponent = (function () {
         });
     };
     FilteredPostsComponent = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'app-filtered-posts',
             template: __webpack_require__("../../../../../src/app/filtered-posts/filtered-posts.component.html"),
             styles: [__webpack_require__("../../../../../src/app/filtered-posts/filtered-posts.component.css")],
@@ -678,11 +683,11 @@ var LoginComponent = (function () {
     function LoginComponent(fb, loginService) {
         this.fb = fb;
         this.loginService = loginService;
-        this.user = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["v" /* EventEmitter */]();
+        this.user = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
         this.serverValidationErrors = [];
         this.loginForm = fb.group({
-            'username': [null, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["d" /* Validators */].compose([__WEBPACK_IMPORTED_MODULE_1__angular_forms__["d" /* Validators */].required, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["d" /* Validators */].minLength(2)])],
-            'password': [null, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["d" /* Validators */].compose([__WEBPACK_IMPORTED_MODULE_1__angular_forms__["d" /* Validators */].required, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["d" /* Validators */].minLength(6)])]
+            'username': [null, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].compose([__WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].required, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].minLength(2)])],
+            'password': [null, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].compose([__WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].required, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].minLength(6)])]
         });
     }
     LoginComponent.prototype.ngOnInit = function () {
@@ -706,17 +711,17 @@ var LoginComponent = (function () {
         });
     };
     __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["P" /* Output */])('user'),
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Output"])('user'),
         __metadata("design:type", Object)
     ], LoginComponent.prototype, "user", void 0);
     LoginComponent = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'app-login',
             template: __webpack_require__("../../../../../src/app/login/login.component.html"),
             styles: [__webpack_require__("../../../../../src/app/login/login.component.css")],
             providers: [__WEBPACK_IMPORTED_MODULE_2__services_login_service__["a" /* LoginService */]]
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormBuilder */],
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["FormBuilder"],
             __WEBPACK_IMPORTED_MODULE_2__services_login_service__["a" /* LoginService */]])
     ], LoginComponent);
     return LoginComponent;
@@ -773,11 +778,11 @@ var MembersComponent = (function () {
     MembersComponent.prototype.ngOnInit = function () {
     };
     __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["D" /* Input */])(),
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
         __metadata("design:type", Object)
     ], MembersComponent.prototype, "user", void 0);
     MembersComponent = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'app-members',
             template: __webpack_require__("../../../../../src/app/members/members.component.html"),
             styles: [__webpack_require__("../../../../../src/app/members/members.component.css")]
@@ -834,8 +839,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 var NavComponent = (function () {
     function NavComponent() {
-        this.dologout = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["v" /* EventEmitter */]();
-        this.navRoute = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["v" /* EventEmitter */]();
+        this.dologout = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
+        this.navRoute = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
     }
     NavComponent.prototype.ngOnInit = function () { };
     NavComponent.prototype.logout = function () {
@@ -847,19 +852,19 @@ var NavComponent = (function () {
         this.navRoute.emit(route);
     };
     __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["D" /* Input */])(),
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
         __metadata("design:type", Object)
     ], NavComponent.prototype, "user", void 0);
     __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["P" /* Output */])(),
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Output"])(),
         __metadata("design:type", Object)
     ], NavComponent.prototype, "dologout", void 0);
     __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["P" /* Output */])('navRoute'),
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Output"])('navRoute'),
         __metadata("design:type", Object)
     ], NavComponent.prototype, "navRoute", void 0);
     NavComponent = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'app-nav',
             template: __webpack_require__("../../../../../src/app/nav/nav.component.html"),
             styles: [__webpack_require__("../../../../../src/app/nav/nav.component.css")]
@@ -894,7 +899,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/post/post.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "\n<div class=\"post\" *ngIf=\"post\">\n\t<img src=\"./uploads/{{post.mainImage}}\">\n\t<h1>{{post.title}}</h1>\n\t<p class=\"meta\">Posted in <a routerLink=\"/posts/filter/category/{{post.category}}\">{{post.category}}</a>, by <a routerLink=\"/posts/filter/author/{{post.author}}\">{{post.author}}</a>, at {{post.date}}</p>\n\n\t<p>{{ post.body }}</p>\n</div>"
+module.exports = "\n<div class=\"post\" *ngIf=\"post\">\n\t<img src=\"./uploads/{{post.mainImage}}\">\n\t<h1>{{post.title}}</h1>\n\t<p class=\"meta\">Posted in <a routerLink=\"/posts/filter/category/{{post.category}}\">{{post.category}}</a>, by <a routerLink=\"/posts/filter/author/{{post.author}}\">{{post.author}}</a>, at {{post.date}}</p>\n\n\t<div [innerHTML]=\"post.body\"></div>\n</div>"
 
 /***/ }),
 
@@ -935,11 +940,10 @@ var PostComponent = (function () {
         this.postService.getPost(id)
             .subscribe(function (res) {
             _this.post = res.post;
-            console.log(res.post);
         });
     };
     PostComponent = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'app-post',
             template: __webpack_require__("../../../../../src/app/post/post.component.html"),
             styles: [__webpack_require__("../../../../../src/app/post/post.component.css")],
@@ -976,7 +980,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/posts/posts.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"posts\">\n\t<div *ngFor=\"let post of posts\">\n\t\t<h2>\n\t\t\t<a routerLink=\"/posts/{{post._id}}\">\n\t\t\t\t{{ post.title }}\n\t\t\t</a>\n\t\t</h2>\n\t\t<img src=\"./uploads/{{post.mainImage}}\">\n\t\t<p class=\"meta\">Posted in <a routerLink=\"/posts/filter/category/{{post.category}}\">{{post.category}}</a>, by <a routerLink=\"/posts/filter/author/{{post.author}}\">{{post.author}}</a>, on {{ moment(post.date).format(\"MM-DD-YYYY\") }}</p>\n\t\t<p>{{post.body}}</p>\n\t\t<button routerLink=\"/posts/{{post._id}}\">Read More</button>\n\t</div>\n</div>"
+module.exports = "<div class=\"posts\">\n\t<div *ngFor=\"let post of posts\">\n\t\t<h2>\n\t\t\t<a routerLink=\"/posts/{{post._id}}\">\n\t\t\t\t{{ post.title }}\n\t\t\t</a>\n\t\t</h2>\n\t\t<img src=\"./uploads/{{post.mainImage}}\">\n\t\t<p class=\"meta\">Posted in <a routerLink=\"/posts/filter/category/{{post.category}}\">{{post.category}}</a>, by <a routerLink=\"/posts/filter/author/{{post.author}}\">{{post.author}}</a>, on {{ moment(post.date).format(\"MM-DD-YYYY\") }}</p>\n\t\t<div [innerHTML]=\"post.body\"></div>\n\t\t<button routerLink=\"/posts/{{post._id}}\">Read More</button>\n\t</div>\n</div>"
 
 /***/ }),
 
@@ -1021,7 +1025,7 @@ var PostsComponent = (function () {
         });
     };
     PostsComponent = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'app-posts',
             template: __webpack_require__("../../../../../src/app/posts/posts.component.html"),
             styles: [__webpack_require__("../../../../../src/app/posts/posts.component.css")],
@@ -1088,11 +1092,11 @@ var RegisterComponent = (function () {
         this.description = '';
         this.name = '';
         this.registerForm = fb.group({
-            'name': [null, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["d" /* Validators */].compose([__WEBPACK_IMPORTED_MODULE_1__angular_forms__["d" /* Validators */].required, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["d" /* Validators */].minLength(2), __WEBPACK_IMPORTED_MODULE_1__angular_forms__["d" /* Validators */].maxLength(20)])],
-            'email': [null, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["d" /* Validators */].compose([__WEBPACK_IMPORTED_MODULE_1__angular_forms__["d" /* Validators */].required, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["d" /* Validators */].email])],
-            'username': [null, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["d" /* Validators */].compose([__WEBPACK_IMPORTED_MODULE_1__angular_forms__["d" /* Validators */].required, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["d" /* Validators */].minLength(2), __WEBPACK_IMPORTED_MODULE_1__angular_forms__["d" /* Validators */].maxLength(10)])],
-            'password': [null, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["d" /* Validators */].compose([__WEBPACK_IMPORTED_MODULE_1__angular_forms__["d" /* Validators */].required, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["d" /* Validators */].minLength(6)])],
-            'password2': [null, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["d" /* Validators */].compose([__WEBPACK_IMPORTED_MODULE_1__angular_forms__["d" /* Validators */].required, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["d" /* Validators */].minLength(6)])],
+            'name': [null, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].compose([__WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].required, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].minLength(2), __WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].maxLength(20)])],
+            'email': [null, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].compose([__WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].required, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].email])],
+            'username': [null, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].compose([__WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].required, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].minLength(2), __WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].maxLength(10)])],
+            'password': [null, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].compose([__WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].required, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].minLength(6)])],
+            'password2': [null, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].compose([__WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].required, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].minLength(6)])],
             'profileImage': [null]
         });
     }
@@ -1116,13 +1120,13 @@ var RegisterComponent = (function () {
         });
     };
     RegisterComponent = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'app-register',
             template: __webpack_require__("../../../../../src/app/register/register.component.html"),
             styles: [__webpack_require__("../../../../../src/app/register/register.component.css")],
             providers: [__WEBPACK_IMPORTED_MODULE_2__services_register_service__["a" /* RegisterService */]]
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormBuilder */],
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["FormBuilder"],
             __WEBPACK_IMPORTED_MODULE_2__services_register_service__["a" /* RegisterService */]])
     ], RegisterComponent);
     return RegisterComponent;
@@ -1165,7 +1169,7 @@ var AddCategoryService = (function () {
             .map(function (res) { return res.json(); });
     };
     AddCategoryService = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* Injectable */])(),
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Http */]])
     ], AddCategoryService);
     return AddCategoryService;
@@ -1204,7 +1208,7 @@ var AddPostService = (function () {
             .map(function (res) { return res.json(); });
     };
     AddPostService = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* Injectable */])(),
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Http */]])
     ], AddPostService);
     return AddPostService;
@@ -1243,7 +1247,7 @@ var LoginService = (function () {
             .map(function (res) { return res.json(); });
     };
     LoginService = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* Injectable */])(),
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Http */]])
     ], LoginService);
     return LoginService;
@@ -1282,7 +1286,7 @@ var LogoutService = (function () {
             .map(function (res) { return res.json(); });
     };
     LogoutService = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* Injectable */])(),
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Http */]])
     ], LogoutService);
     return LogoutService;
@@ -1321,7 +1325,7 @@ var PostService = (function () {
             .map(function (res) { return res.json(); });
     };
     PostService = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* Injectable */])(),
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Http */]])
     ], PostService);
     return PostService;
@@ -1368,7 +1372,7 @@ var PostsService = (function () {
             .map(function (res) { return res.json(); });
     };
     PostsService = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* Injectable */])(),
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Http */]])
     ], PostsService);
     return PostsService;
@@ -1407,7 +1411,7 @@ var RegisterService = (function () {
             .map(function (res) { return res.json(); });
     };
     RegisterService = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* Injectable */])(),
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Http */]])
     ], RegisterService);
     return RegisterService;
@@ -1446,7 +1450,7 @@ var SimpleService = (function () {
             .map(function (res) { return res.json(); });
     };
     SimpleService = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* Injectable */])(),
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Http */]])
     ], SimpleService);
     return SimpleService;
@@ -1486,7 +1490,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 if (__WEBPACK_IMPORTED_MODULE_3__environments_environment__["a" /* environment */].production) {
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_13" /* enableProdMode */])();
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["enableProdMode"])();
 }
 Object(__WEBPACK_IMPORTED_MODULE_1__angular_platform_browser_dynamic__["a" /* platformBrowserDynamic */])().bootstrapModule(__WEBPACK_IMPORTED_MODULE_2__app_app_module__["a" /* AppModule */])
     .catch(function (err) { return console.log(err); });

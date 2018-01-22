@@ -1,5 +1,7 @@
 <h2 class="page-header">Add Post</h2>
 
+
+
 <div class="success-message" *ngIf="successMessage">
 	<div class="alert alert-success">{{successMessage}}</div>
 </div>
@@ -30,7 +32,7 @@
 
 	<div class="form-group">
 		<label for="">body</label>
-		<textarea formControlName="body" class="form-control"></textarea>
+		<ck-editor formControlName="body" name="editor1" [(ngModel)]="editorValue" skin="moono-lisa" lang="en" [fullPage]="false"></ck-editor>
 
 		<div class="alert alert-danger" *ngIf="!addPostForm.controls['body'].valid && addPostForm.controls['body'].touched">
 			body is required..
