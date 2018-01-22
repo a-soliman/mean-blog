@@ -550,7 +550,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/filtered-posts/filtered-posts.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div>\n\t<h3>Found {{resultCount}} results, filtering {{filter}}</h3>\n</div>\n\n<div class=\"posts\">\n\t<div *ngFor=\"let post of posts\">\n\t\t<h2>\n\t\t\t<a routerLink=\"/posts/{{post._id}}\">\n\t\t\t\t{{ post.title }}\n\t\t\t</a>\n\t\t</h2>\n\t\t<img src=\"./uploads/{{post.mainImage}}\">\n\t\t<p class=\"meta\">Posted in <a routerLink=\"/posts/filter/category/{{post.category}}\">{{post.category}}</a>, by <a routerLink=\"/posts/filter/author/{{post.author}}\">{{post.author}}</a>, on {{ moment(post.date).format(\"MM-DD-YYYY\") }}</p>\n\t\t<p>{{post.body}}</p>\n\t\t<button routerLink=\"/posts/{{post._id}}\">Read More</button>\n\t</div>\n</div>"
+module.exports = "<div>\n\t<h3>Found {{resultCount}} results, filtering {{filter}}</h3>\n</div>\n\n<div class=\"posts\">\n\t<div *ngFor=\"let post of posts\">\n\t\t<h2>\n\t\t\t<a routerLink=\"/posts/{{post._id}}\">\n\t\t\t\t{{ post.title }}\n\t\t\t</a>\n\t\t</h2>\n\t\t<img src=\"./uploads/{{post.mainImage}}\">\n\t\t<p class=\"meta\">Posted in <a routerLink=\"/posts/filter/category/{{post.category}}\">{{post.category}}</a>, by <a routerLink=\"/posts/filter/author/{{post.author}}\">{{post.author}}</a>, on {{ moment(post.date).format(\"MM-DD-YYYY\") }}</p>\n\t\t<div [innerHTML]=\"post.body\"></div>\n\t\t<button routerLink=\"/posts/{{post._id}}\">Read More</button>\n\t</div>\n</div>"
 
 /***/ }),
 
