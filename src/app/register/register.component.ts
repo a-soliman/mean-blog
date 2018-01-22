@@ -51,7 +51,6 @@ export class RegisterComponent implements OnInit {
 					this.successMessage = res.message;
 					this.registerForm.reset();
 				}
-				console.log(res);
 			});
 
 		
