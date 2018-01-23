@@ -19,6 +19,7 @@ import { AddCategoryComponent } from './add-category/add-category.component';
 import { PostComponent } from './post/post.component';
 import { FilteredPostsComponent } from './filtered-posts/filtered-posts.component';
 import { AccountComponent } from './account/account.component';
+import { TruncatePipe } from './truncate.pipe';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import { AccountComponent } from './account/account.component';
     AddCategoryComponent,
     PostComponent,
     FilteredPostsComponent,
-    AccountComponent
+    AccountComponent,
+    TruncatePipe
   ],
   imports: [
     BrowserModule,

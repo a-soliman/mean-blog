@@ -434,12 +434,14 @@ var AppComponent = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__post_post_component__ = __webpack_require__("../../../../../src/app/post/post.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__filtered_posts_filtered_posts_component__ = __webpack_require__("../../../../../src/app/filtered-posts/filtered-posts.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__account_account_component__ = __webpack_require__("../../../../../src/app/account/account.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__truncate_pipe__ = __webpack_require__("../../../../../src/app/truncate.pipe.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -474,7 +476,8 @@ var AppModule = (function () {
                 __WEBPACK_IMPORTED_MODULE_14__add_category_add_category_component__["a" /* AddCategoryComponent */],
                 __WEBPACK_IMPORTED_MODULE_15__post_post_component__["a" /* PostComponent */],
                 __WEBPACK_IMPORTED_MODULE_16__filtered_posts_filtered_posts_component__["a" /* FilteredPostsComponent */],
-                __WEBPACK_IMPORTED_MODULE_17__account_account_component__["a" /* AccountComponent */]
+                __WEBPACK_IMPORTED_MODULE_17__account_account_component__["a" /* AccountComponent */],
+                __WEBPACK_IMPORTED_MODULE_18__truncate_pipe__["a" /* TruncatePipe */]
             ],
             imports: [
                 __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
@@ -931,7 +934,6 @@ var PostComponent = (function () {
     PostComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.route.params.subscribe(function (params) {
-            console.log(params.id);
             _this.getPost(params.id);
         });
     };
@@ -1021,8 +1023,20 @@ var PostsComponent = (function () {
             .subscribe(function (res) {
             if (res.status === 'success') {
                 _this.posts = res.posts;
+                _this.truncateBody(_this.posts);
             }
         });
+    };
+    PostsComponent.prototype.truncateBody = function (list) {
+        if (!list.length) {
+            return;
+        }
+        list.forEach(function (post) {
+            if (post.body.length > 50) {
+                post.body = post.body.substring(0, 50) + '...';
+            }
+        });
+        return;
     };
     PostsComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
@@ -1116,7 +1130,6 @@ var RegisterComponent = (function () {
                 _this.successMessage = res.message;
                 _this.registerForm.reset();
             }
-            console.log(res);
         });
     };
     RegisterComponent = __decorate([
@@ -1454,6 +1467,40 @@ var SimpleService = (function () {
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Http */]])
     ], SimpleService);
     return SimpleService;
+}());
+
+
+
+/***/ }),
+
+/***/ "../../../../../src/app/truncate.pipe.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TruncatePipe; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+var TruncatePipe = (function () {
+    function TruncatePipe() {
+    }
+    TruncatePipe.prototype.transform = function (body, limit) {
+        if (body.length > 50) {
+            return body.substring(0, limit);
+        }
+        return body;
+    };
+    TruncatePipe = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Pipe"])({
+            name: 'truncate'
+        })
+    ], TruncatePipe);
+    return TruncatePipe;
 }());
 
 

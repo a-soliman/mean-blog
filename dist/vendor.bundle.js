@@ -16473,7 +16473,7 @@ var CKEditorComponent = (function () {
         this.ckIns.on('change', function () {
             _this.onTouched();
             var val = _this.ckIns.getData();
-            console.warn('chagne', val);
+            //console.warn('chagne', val);
             _this.updateValue(val);
         });
     };
